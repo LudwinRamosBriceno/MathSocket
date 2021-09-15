@@ -10,6 +10,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,7 +19,9 @@ import java.util.logging.Logger;
  * @author lujor
  */
 public class Jugador2 extends javax.swing.JFrame {
-    
+
+    static int count = 0;
+    static int valorDado = 0;
     static String mensaje = "";
     static Socket socket;
     static DataInputStream datoEntrada;
@@ -63,10 +66,12 @@ public class Jugador2 extends javax.swing.JFrame {
         C13 = new javax.swing.JLabel();
         C12 = new javax.swing.JLabel();
         C14 = new javax.swing.JLabel();
+        Dado2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MainFrame2");
         setPreferredSize(new java.awt.Dimension(600, 600));
+        setResizable(false);
 
         MainPanel2.setBackground(new java.awt.Color(0, 153, 255));
         MainPanel2.setPreferredSize(new java.awt.Dimension(600, 600));
@@ -203,6 +208,14 @@ public class Jugador2 extends javax.swing.JFrame {
         C14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
         C14.setPreferredSize(new java.awt.Dimension(150, 50));
 
+        Dado2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/interrogation.png"))); // NOI18N
+        Dado2.setEnabled(false);
+        Dado2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Dado2MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelJuego2Layout = new javax.swing.GroupLayout(PanelJuego2);
         PanelJuego2.setLayout(PanelJuego2Layout);
         PanelJuego2Layout.setHorizontalGroup(
@@ -250,18 +263,21 @@ public class Jugador2 extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(C5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(24, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelJuego2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Dado2)
+                .addGap(50, 50, 50))
         );
         PanelJuego2Layout.setVerticalGroup(
             PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelJuego2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelJuego2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(C2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(C2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PanelJuego2Layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
+                        .addComponent(Dado2)
+                        .addGap(14, 14, 14)
                         .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(C4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(C3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -287,7 +303,7 @@ public class Jugador2 extends javax.swing.JFrame {
                             .addComponent(C14, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(C13, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(C15, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -338,7 +354,7 @@ public class Jugador2 extends javax.swing.JFrame {
         if (espacios == 0) {
             AvisoNombre.setText("¡Nombre Vacío!");
             return;
-        }else{
+        } else {
             MainPanel2.setVisible(false);
             PanelJuego2.setVisible(true);
             try {
@@ -358,14 +374,32 @@ public class Jugador2 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonInstru2Action
 
-    public void iniciarJuego() throws IOException {
-        String mensaje = "";
-        MainPanel2.setVisible(false);
-        PanelJuego2.setVisible(true);
-        while (!mensaje.equals("exit")) {
-            mensaje = datoEntrada.readUTF();
+    private void Dado2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Dado2MouseClicked
+        try {
+            Random numDado = new Random();
+            int num = numDado.nextInt(4) + 1;
+            //mensaje = datoEntrada.readUTF();
+            if (valorDado == 0) {
+                System.out.println(num);
+                valorDado = num;
+                int numero = Integer.parseInt(mensaje);
+                if (numero > num) {
+                    Dado2.setEnabled(false);
+                    datoSalida.writeUTF("vas primero");
+                } else if (numero < num) {
+                    return;
+                } else {
+                    Dado2.setEnabled(false);
+                    datoSalida.writeUTF("otra vez");
+                    valorDado = 0;
+                    count = 0;
+                }
+            }
+
+        } catch (IOException e) {
+            //se maneja la excepción aquí
         }
-    }
+    }//GEN-LAST:event_Dado2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -391,11 +425,12 @@ public class Jugador2 extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Jugador2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Jugador2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (java.lang.NullPointerException ex){
-            
+        } catch (java.lang.NullPointerException ex) {
+
         }
         //</editor-fold>
 
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -409,12 +444,19 @@ public class Jugador2 extends javax.swing.JFrame {
             datoEntrada = new DataInputStream(socket.getInputStream());
             datoSalida = new DataOutputStream(socket.getOutputStream());
             while (true) {
-                mensaje = datoEntrada.readUTF();
+                try {
+                    mensaje = datoEntrada.readUTF();
+                } catch (IOException ex) {
+                    Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (valorDado == 0 && !mensaje.equals("") && count == 0) {
+                    Dado2.setEnabled(true);
+                    count = 1;
+                }
             }
-        } catch (IOException e) {
-            //se maneja la excepción aquí
+        } catch (IOException ex) {
+            Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -434,6 +476,7 @@ public class Jugador2 extends javax.swing.JFrame {
     private javax.swing.JLabel C8;
     private javax.swing.JLabel C9;
     private javax.swing.JLabel CInicio;
+    private static javax.swing.JLabel Dado2;
     private static javax.swing.JPanel MainPanel2;
     private javax.swing.JTextField Nombre2;
     private static javax.swing.JPanel PanelJuego2;

@@ -11,15 +11,19 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static mathsocket.Jugador2.datoSalida;
 
 /**
  *
  * @author lujor
  */
 public class Jugador1 extends javax.swing.JFrame {
-    
+
+    static int valorDado = 0;
+    static String mensaje = "";
     static ServerSocket serverSocket;
     static Socket socket;
     static DataInputStream datoEntrada;
@@ -57,7 +61,7 @@ public class Jugador1 extends javax.swing.JFrame {
         C7 = new javax.swing.JLabel();
         C6 = new javax.swing.JLabel();
         C4 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        CFinal = new javax.swing.JLabel();
         C10 = new javax.swing.JLabel();
         C11 = new javax.swing.JLabel();
         C5 = new javax.swing.JLabel();
@@ -65,6 +69,7 @@ public class Jugador1 extends javax.swing.JFrame {
         C13 = new javax.swing.JLabel();
         C12 = new javax.swing.JLabel();
         C14 = new javax.swing.JLabel();
+        Dado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MainFrame");
@@ -188,9 +193,9 @@ public class Jugador1 extends javax.swing.JFrame {
         C4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
         C4.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        jLabel9.setBackground(new java.awt.Color(204, 0, 204));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - fin2.png"))); // NOI18N
-        jLabel9.setPreferredSize(new java.awt.Dimension(150, 50));
+        CFinal.setBackground(new java.awt.Color(204, 0, 204));
+        CFinal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - fin2.png"))); // NOI18N
+        CFinal.setPreferredSize(new java.awt.Dimension(150, 50));
 
         C10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
         C10.setPreferredSize(new java.awt.Dimension(150, 50));
@@ -215,6 +220,13 @@ public class Jugador1 extends javax.swing.JFrame {
         C14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
         C14.setPreferredSize(new java.awt.Dimension(150, 50));
 
+        Dado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/interrogation.png"))); // NOI18N
+        Dado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DadoMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout PanelJuegoLayout = new javax.swing.GroupLayout(PanelJuego);
         PanelJuego.setLayout(PanelJuegoLayout);
         PanelJuegoLayout.setHorizontalGroup(
@@ -226,16 +238,16 @@ public class Jugador1 extends javax.swing.JFrame {
                         .addComponent(CInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(C2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(14, 14, 14)
                         .addComponent(C3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(C4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(PanelJuegoLayout.createSequentialGroup()
                         .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelJuegoLayout.createSequentialGroup()
                                 .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(C9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -262,21 +274,24 @@ public class Jugador1 extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(C5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(24, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelJuegoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Dado)
+                .addGap(58, 58, 58))
         );
         PanelJuegoLayout.setVerticalGroup(
             PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelJuegoLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(Dado)
+                .addGap(18, 18, 18)
                 .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelJuegoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(CInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelJuegoLayout.createSequentialGroup()
-                        .addGap(105, 105, 105)
+                    .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(C3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(C3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(C4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(C2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(C4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(C2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(CInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(C7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -288,7 +303,7 @@ public class Jugador1 extends javax.swing.JFrame {
                     .addGroup(PanelJuegoLayout.createSequentialGroup()
                         .addComponent(C9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelJuegoLayout.createSequentialGroup()
                         .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(C11, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,7 +314,7 @@ public class Jugador1 extends javax.swing.JFrame {
                             .addComponent(C14, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(C13, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(C15, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -329,7 +344,7 @@ public class Jugador1 extends javax.swing.JFrame {
     }//GEN-LAST:event_Nombre1ActionPerformed
 
     private void buttonJugarAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonJugarAction
-        
+
         String Jugador1 = Nombre1.getText();
         int espacios = 0;
         //char[] caracteres = Jugador1.toCharArray();
@@ -351,8 +366,8 @@ public class Jugador1 extends javax.swing.JFrame {
             EsperarJugador.setText("Esperando Jugador...");
 
         }
-            
-        
+
+
     }//GEN-LAST:event_buttonJugarAction
 
     private void buttonSalirAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalirAction
@@ -367,6 +382,26 @@ public class Jugador1 extends javax.swing.JFrame {
         Nombre1.setText("");
         Nombre1.setForeground(Color.black);
     }//GEN-LAST:event_Nombre1MousePressed
+
+    private void DadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DadoMouseClicked
+        try {
+            Random numDado = new Random();
+            int num = numDado.nextInt(4) + 1;
+            if (valorDado == 0) {
+                String digito = String.valueOf(num);
+                datoSalida.writeUTF(digito);
+                Dado.setEnabled(false);
+
+            } else {
+                datoSalida.writeUTF("es tu turno");
+
+            }
+            System.out.println(num);
+
+        } catch (IOException ex) {
+            Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_DadoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -392,8 +427,8 @@ public class Jugador1 extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Jugador1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Jugador1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (java.lang.NullPointerException ex){
-            
+        } catch (java.lang.NullPointerException ex) {
+
         }
         //</editor-fold>
 
@@ -403,21 +438,25 @@ public class Jugador1 extends javax.swing.JFrame {
                 new Jugador1().setVisible(true);
             }
         });
-        
+
         try {
-            String mensaje = "";
             serverSocket = new ServerSocket(1201);
             socket = serverSocket.accept();
             datoEntrada = new DataInputStream(socket.getInputStream());
             datoSalida = new DataOutputStream(socket.getOutputStream());
             while (true) {
                 mensaje = datoEntrada.readUTF();
-                if (mensaje.equals("iniciar")){
+                if (mensaje.equals("iniciar")) {
                     MainPanel.setVisible(false);
                     PanelJuego.setVisible(true);
-                    
+                    mensaje = "";
                 }
-                
+                if (mensaje.equals("otra vez")) {
+                    Dado.setEnabled(true);
+                    valorDado = 0;
+                } else if (mensaje.equals("vas primero")) {
+                    Dado.setEnabled(true);
+                }
             }
         } catch (IOException e) {
             //se maneja la excepción aquí
@@ -440,7 +479,9 @@ public class Jugador1 extends javax.swing.JFrame {
     private javax.swing.JLabel C7;
     private javax.swing.JLabel C8;
     private javax.swing.JLabel C9;
+    private javax.swing.JLabel CFinal;
     private javax.swing.JLabel CInicio;
+    private static javax.swing.JLabel Dado;
     private static javax.swing.JLabel EsperarJugador;
     private static javax.swing.JPanel MainPanel;
     private javax.swing.JTextField Nombre1;
@@ -448,6 +489,5 @@ public class Jugador1 extends javax.swing.JFrame {
     private javax.swing.JButton buttonInstru;
     private javax.swing.JButton buttonJugar;
     private javax.swing.JButton buttonSalir;
-    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
