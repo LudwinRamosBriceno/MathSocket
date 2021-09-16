@@ -6,6 +6,7 @@
 package mathsocket;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -14,6 +15,8 @@ import java.net.Socket;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import static mathsocket.Jugador2.datoSalida;
 
 /**
@@ -21,7 +24,16 @@ import static mathsocket.Jugador2.datoSalida;
  * @author lujor
  */
 public class Jugador1 extends javax.swing.JFrame {
-
+    
+    ImageIcon img1 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
+            + "\\Math Socket App\\MathSocket\\src\\images\\DadoOne.png");
+    ImageIcon img2 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
+            + "\\Math Socket App\\MathSocket\\src\\images\\DadoTwo.png");
+    ImageIcon img3 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
+            + "\\Math Socket App\\MathSocket\\src\\images\\DadoThree.png");
+    ImageIcon img4 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
+            + "\\Math Socket App\\MathSocket\\src\\images\\DadoFour.png");
+    
     static int valorDado = 0;
     static String mensaje = "";
     static ServerSocket serverSocket;
@@ -69,6 +81,7 @@ public class Jugador1 extends javax.swing.JFrame {
         C13 = new javax.swing.JLabel();
         C12 = new javax.swing.JLabel();
         C14 = new javax.swing.JLabel();
+        buttonDado = new javax.swing.JLabel();
         Dado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -220,12 +233,14 @@ public class Jugador1 extends javax.swing.JFrame {
         C14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
         C14.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        Dado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/interrogation.png"))); // NOI18N
-        Dado.addMouseListener(new java.awt.event.MouseAdapter() {
+        buttonDado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/interrogation.png"))); // NOI18N
+        buttonDado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                DadoMouseClicked(evt);
+                buttonDadoMouseClicked(evt);
             }
         });
+
+        Dado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/DadoZero.png"))); // NOI18N
 
         javax.swing.GroupLayout PanelJuegoLayout = new javax.swing.GroupLayout(PanelJuego);
         PanelJuego.setLayout(PanelJuegoLayout);
@@ -275,15 +290,19 @@ public class Jugador1 extends javax.swing.JFrame {
                                 .addComponent(C5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(24, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelJuegoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Dado)
-                .addGap(58, 58, 58))
+                .addGap(32, 32, 32)
+                .addComponent(Dado, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(buttonDado)
+                .addGap(40, 40, 40))
         );
         PanelJuegoLayout.setVerticalGroup(
             PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelJuegoLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(Dado)
+                .addGap(19, 19, 19)
+                .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(buttonDado)
+                    .addComponent(Dado, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,7 +333,7 @@ public class Jugador1 extends javax.swing.JFrame {
                             .addComponent(C14, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(C13, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(C15, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -383,25 +402,66 @@ public class Jugador1 extends javax.swing.JFrame {
         Nombre1.setForeground(Color.black);
     }//GEN-LAST:event_Nombre1MousePressed
 
-    private void DadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DadoMouseClicked
+    private void buttonDadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonDadoMouseClicked
         try {
             Random numDado = new Random();
             int num = numDado.nextInt(4) + 1;
             if (valorDado == 0) {
+                System.out.println("si pasa");
                 String digito = String.valueOf(num);
                 datoSalida.writeUTF(digito);
-                Dado.setEnabled(false);
+                buttonDado.setEnabled(false);
+                switch (num) {
+                    case 1:
+                       
+                        Dado.setIcon(img1);
+                        break;
 
+                    case 2:
+
+                        Dado.setIcon(img2);
+                        break;
+
+                    case 3:
+
+                        Dado.setIcon(img3);
+                        break;
+
+                    case 4:
+
+                        Dado.setIcon(img4);
+                        break;
+                }
             } else {
                 datoSalida.writeUTF("es tu turno");
+                switch (num) {
+                    case 1:
+                       
+                        Dado.setIcon(img1);
+                        break;
 
+                    case 2:
+
+                        Dado.setIcon(img2);
+                        break;
+
+                    case 3:
+
+                        Dado.setIcon(img3);
+                        break;
+
+                    case 4:
+
+                        Dado.setIcon(img4);
+                        break;
+                }
+                buttonDado.setEnabled(false);
             }
             System.out.println(num);
-
         } catch (IOException ex) {
             Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_DadoMouseClicked
+    }//GEN-LAST:event_buttonDadoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -444,23 +504,31 @@ public class Jugador1 extends javax.swing.JFrame {
             socket = serverSocket.accept();
             datoEntrada = new DataInputStream(socket.getInputStream());
             datoSalida = new DataOutputStream(socket.getOutputStream());
-            while (true) {
-                mensaje = datoEntrada.readUTF();
-                if (mensaje.equals("iniciar")) {
-                    MainPanel.setVisible(false);
-                    PanelJuego.setVisible(true);
-                    mensaje = "";
-                }
-                if (mensaje.equals("otra vez")) {
-                    Dado.setEnabled(true);
-                    valorDado = 0;
-                } else if (mensaje.equals("vas primero")) {
-                    Dado.setEnabled(true);
-                }
-            }
-        } catch (IOException e) {
-            //se maneja la excepción aquí
+        } catch (IOException ex) {
+            Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        while (true) {
+            try {
+                mensaje = datoEntrada.readUTF();
+            } catch (IOException ex) {
+                Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (mensaje.equals("iniciar")) {
+                MainPanel.setVisible(false);
+                PanelJuego.setVisible(true);
+                mensaje = "";
+            }
+            if (mensaje.equals("otra vez")) {
+                buttonDado.setEnabled(true);
+                valorDado = 0;
+                
+            }else if (mensaje.equals("es tu turno")){
+                buttonDado.setEnabled(true);
+                valorDado =1;
+            }
+        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -481,11 +549,12 @@ public class Jugador1 extends javax.swing.JFrame {
     private javax.swing.JLabel C9;
     private javax.swing.JLabel CFinal;
     private javax.swing.JLabel CInicio;
-    private static javax.swing.JLabel Dado;
+    private javax.swing.JLabel Dado;
     private static javax.swing.JLabel EsperarJugador;
     private static javax.swing.JPanel MainPanel;
     private javax.swing.JTextField Nombre1;
     private static javax.swing.JPanel PanelJuego;
+    private static javax.swing.JLabel buttonDado;
     private javax.swing.JButton buttonInstru;
     private javax.swing.JButton buttonJugar;
     private javax.swing.JButton buttonSalir;
