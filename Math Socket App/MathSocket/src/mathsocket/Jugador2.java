@@ -14,13 +14,15 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import static mathsocket.Jugador1.datoSalida;
 
 /**
  *
  * @author lujor
  */
 public class Jugador2 extends javax.swing.JFrame {
-    
+
     ImageIcon img1 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
             + "\\Math Socket App\\MathSocket\\src\\images\\DadoOne.png");
     ImageIcon img2 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
@@ -29,7 +31,13 @@ public class Jugador2 extends javax.swing.JFrame {
             + "\\Math Socket App\\MathSocket\\src\\images\\DadoThree.png");
     ImageIcon img4 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
             + "\\Math Socket App\\MathSocket\\src\\images\\DadoFour.png");
-    
+    ImageIcon CasillaReto = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
+            + "\\Math Socket App\\MathSocket\\src\\images\\Casilla - reto.png");
+    ImageIcon CasillaTrampa = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
+            + "\\Math Socket App\\MathSocket\\src\\images\\Casilla - trampa.png");
+    ImageIcon CasillaTunel = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
+            + "\\Math Socket App\\MathSocket\\src\\images\\Casilla - túnel.png");
+
     static int count = 0;
     static int valorDado = 0;
     static String mensaje = "";
@@ -68,7 +76,7 @@ public class Jugador2 extends javax.swing.JFrame {
         C7 = new javax.swing.JLabel();
         C6 = new javax.swing.JLabel();
         C4 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        CFin = new javax.swing.JLabel();
         C10 = new javax.swing.JLabel();
         C11 = new javax.swing.JLabel();
         C5 = new javax.swing.JLabel();
@@ -192,9 +200,9 @@ public class Jugador2 extends javax.swing.JFrame {
         C4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
         C4.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        jLabel9.setBackground(new java.awt.Color(204, 0, 204));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - fin2.png"))); // NOI18N
-        jLabel9.setPreferredSize(new java.awt.Dimension(150, 50));
+        CFin.setBackground(new java.awt.Color(204, 0, 204));
+        CFin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - fin2.png"))); // NOI18N
+        CFin.setPreferredSize(new java.awt.Dimension(150, 50));
 
         C10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
         C10.setPreferredSize(new java.awt.Dimension(150, 50));
@@ -249,7 +257,7 @@ public class Jugador2 extends javax.swing.JFrame {
                         .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelJuego2Layout.createSequentialGroup()
                                 .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CFin, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(C9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,7 +319,7 @@ public class Jugador2 extends javax.swing.JFrame {
                     .addGroup(PanelJuego2Layout.createSequentialGroup()
                         .addComponent(C9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CFin, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelJuego2Layout.createSequentialGroup()
                         .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(C11, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -357,15 +365,15 @@ public class Jugador2 extends javax.swing.JFrame {
 
     private void buttonJugar2Action(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonJugar2Action
 
-        String Jugador1 = Nombre2.getText();
+        String Jugador2 = Nombre2.getText();
         int espacios = 0;
         //char[] caracteres = Jugador1.toCharArray();
-        if (Jugador1.contentEquals("") || Jugador1.length() >= 10) {
+        if (Jugador2.contentEquals("") || Jugador2.length() >= 10) {
             AvisoNombre.setText("¡Nombre no válido!");
             return;
         }
-        for (int i = 0; i <= Jugador1.length() - 1; i++) {
-            String letra = String.valueOf(Jugador1.charAt(i));
+        for (int i = 0; i <= Jugador2.length() - 1; i++) {
+            String letra = String.valueOf(Jugador2.charAt(i));
             if (!letra.equals(" ")) {
                 espacios++;
             }
@@ -374,6 +382,35 @@ public class Jugador2 extends javax.swing.JFrame {
             AvisoNombre.setText("¡Nombre Vacío!");
             return;
         } else {
+            JLabel[] casillas = new JLabel[]{C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15};
+            AsigCasillas b = new AsigCasillas();
+            int[] casillasRandom;
+            casillasRandom = b.dequeue();
+            try {
+                datoSalida.writeUTF("casilla");
+            } catch (IOException ex) {
+                Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (int i = 0; i < casillas.length; i++) {
+                JLabel casilla = casillas[i];
+                String index = String.valueOf(casillasRandom[i]);
+                try {
+                    datoSalida.writeUTF(index);
+                } catch (IOException ex) {
+                    Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                switch (casillasRandom[i]) {
+                    case 1:
+                        casilla.setIcon(CasillaReto);
+                        break;
+                    case 2:
+                        casilla.setIcon(CasillaTrampa);
+                        break;
+                    case 3:
+                        casilla.setIcon(CasillaTunel);
+                        break;
+                }
+            }
             MainPanel2.setVisible(false);
             PanelJuego2.setVisible(true);
             try {
@@ -401,26 +438,26 @@ public class Jugador2 extends javax.swing.JFrame {
         if (valorDado == 0) {
             valorDado = num;
             switch (num) {
-                    case 1:
-                       
-                        Dado2.setIcon(img1);
-                        break;
+                case 1:
 
-                    case 2:
+                    Dado2.setIcon(img1);
+                    break;
 
-                        Dado2.setIcon(img2);
-                        break;
+                case 2:
 
-                    case 3:
+                    Dado2.setIcon(img2);
+                    break;
 
-                        Dado2.setIcon(img3);
-                        break;
+                case 3:
 
-                    case 4:
+                    Dado2.setIcon(img3);
+                    break;
 
-                        Dado2.setIcon(img4);
-                        break;
-                }
+                case 4:
+
+                    Dado2.setIcon(img4);
+                    break;
+            }
             int numero = Integer.parseInt(mensaje);
             if (numero > num) {
                 buttonDado2.setEnabled(false);
@@ -429,7 +466,8 @@ public class Jugador2 extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else if (numero < num) {
+            } else if (numero < num ) {
+                mensaje="es tu turno";
                 valorDado = 1;
                 return;
             } else {
@@ -442,7 +480,7 @@ public class Jugador2 extends javax.swing.JFrame {
                 valorDado = 0;
                 count = 0;
             }
-        }else if (mensaje.equals("es tu turno")){
+        } else if (mensaje.equals("es tu turno")) {
             buttonDado2.setEnabled(false);
             try {
                 datoSalida.writeUTF("es tu turno");
@@ -450,27 +488,27 @@ public class Jugador2 extends javax.swing.JFrame {
                 Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
             }
             switch (num) {
-                    case 1:
-                       
-                        Dado2.setIcon(img1);
-                        break;
+                case 1:
 
-                    case 2:
+                    Dado2.setIcon(img1);
+                    break;
 
-                        Dado2.setIcon(img2);
-                        break;
+                case 2:
 
-                    case 3:
+                    Dado2.setIcon(img2);
+                    break;
 
-                        Dado2.setIcon(img3);
-                        break;
+                case 3:
 
-                    case 4:
+                    Dado2.setIcon(img3);
+                    break;
 
-                        Dado2.setIcon(img4);
-                        break;
-                }
-            
+                case 4:
+
+                    Dado2.setIcon(img4);
+                    break;
+            }
+
         }
         System.out.println(num);
     }//GEN-LAST:event_buttonDado2MouseClicked
@@ -504,9 +542,6 @@ public class Jugador2 extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        //</editor-fold>
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -526,7 +561,7 @@ public class Jugador2 extends javax.swing.JFrame {
                 if (valorDado == 0 && !mensaje.equals("") && count == 0) {
                     buttonDado2.setEnabled(true);
                     count = 1;
-                }else if (mensaje.equals("es tu turno")){
+                } else if (mensaje.equals("es tu turno")) {
                     buttonDado2.setEnabled(true);
                 }
             }
@@ -551,6 +586,7 @@ public class Jugador2 extends javax.swing.JFrame {
     private javax.swing.JLabel C7;
     private javax.swing.JLabel C8;
     private javax.swing.JLabel C9;
+    private javax.swing.JLabel CFin;
     private javax.swing.JLabel CInicio;
     private javax.swing.JLabel Dado2;
     private static javax.swing.JPanel MainPanel2;
@@ -560,6 +596,5 @@ public class Jugador2 extends javax.swing.JFrame {
     private javax.swing.JButton buttonInstru2;
     private javax.swing.JButton buttonJugar2;
     private javax.swing.JButton buttonSalir2;
-    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }

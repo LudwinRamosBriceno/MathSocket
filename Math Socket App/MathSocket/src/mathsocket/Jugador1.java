@@ -15,16 +15,17 @@ import java.net.Socket;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import static mathsocket.Jugador2.datoSalida;
+import static mathsocket.Jugador2.mensaje;
 
 /**
  *
  * @author lujor
  */
 public class Jugador1 extends javax.swing.JFrame {
-    
+
     ImageIcon img1 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
             + "\\Math Socket App\\MathSocket\\src\\images\\DadoOne.png");
     ImageIcon img2 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
@@ -33,7 +34,13 @@ public class Jugador1 extends javax.swing.JFrame {
             + "\\Math Socket App\\MathSocket\\src\\images\\DadoThree.png");
     ImageIcon img4 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
             + "\\Math Socket App\\MathSocket\\src\\images\\DadoFour.png");
-    
+    static ImageIcon CasillaReto = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
+            + "\\Math Socket App\\MathSocket\\src\\images\\Casilla - reto.png");
+    static ImageIcon CasillaTrampa = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
+            + "\\Math Socket App\\MathSocket\\src\\images\\Casilla - trampa.png");
+    static ImageIcon CasillaTunel = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
+            + "\\Math Socket App\\MathSocket\\src\\images\\Casilla - túnel.png");
+
     static int valorDado = 0;
     static String mensaje = "";
     static ServerSocket serverSocket;
@@ -264,31 +271,35 @@ public class Jugador1 extends javax.swing.JFrame {
                                 .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(CFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(C9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(PanelJuegoLayout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
                                         .addComponent(C15, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(C14, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(PanelJuegoLayout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
+                                        .addGap(28, 28, 28)
                                         .addComponent(C10, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(C11, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(C13, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C12, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(PanelJuegoLayout.createSequentialGroup()
+                                        .addComponent(C12, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 3, Short.MAX_VALUE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelJuegoLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(C13, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(PanelJuegoLayout.createSequentialGroup()
                                 .addGap(4, 4, 4)
                                 .addComponent(C8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(C7, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addGap(14, 14, 14)
                                 .addComponent(C6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(C5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(24, Short.MAX_VALUE))))
+                        .addContainerGap(13, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelJuegoLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(Dado, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -413,7 +424,7 @@ public class Jugador1 extends javax.swing.JFrame {
                 buttonDado.setEnabled(false);
                 switch (num) {
                     case 1:
-                       
+
                         Dado.setIcon(img1);
                         break;
 
@@ -436,7 +447,7 @@ public class Jugador1 extends javax.swing.JFrame {
                 datoSalida.writeUTF("es tu turno");
                 switch (num) {
                     case 1:
-                       
+
                         Dado.setIcon(img1);
                         break;
 
@@ -507,46 +518,71 @@ public class Jugador1 extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        JLabel[] casillas = new JLabel[]{C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15};
+        boolean exp = true;
         while (true) {
-            try {
-                mensaje = datoEntrada.readUTF();
-            } catch (IOException ex) {
-                Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
+            if (mensaje.equals("casilla")) {
+                for (int i = 0; i < casillas.length; i++) {
+                    try {
+                        mensaje = datoEntrada.readUTF();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    int index = Integer.parseInt(mensaje);
+                    JLabel casilla = casillas[i];
+                    switch (index) {
+                        case 1:
+                            casilla.setIcon(CasillaReto);
+                            break;
+                        case 2:
+                            casilla.setIcon(CasillaTrampa);
+                            break;
+                        case 3:
+                            casilla.setIcon(CasillaTunel);
+                            break;
+                    }
+                }
+            } else {
+                try {
+                    mensaje = datoEntrada.readUTF();
+                } catch (IOException ex) {
+                    Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (mensaje.equals("iniciar")) {
+                    MainPanel.setVisible(false);
+                    PanelJuego.setVisible(true);
+                    mensaje = "";
+                }
+                if (mensaje.equals("otra vez")) {
+                    buttonDado.setEnabled(true);
+                    valorDado = 0;
+
+                } else if (mensaje.equals("es tu turno")) {
+                    buttonDado.setEnabled(true);
+                    valorDado = 1;
+                }
             }
-            if (mensaje.equals("iniciar")) {
-                MainPanel.setVisible(false);
-                PanelJuego.setVisible(true);
-                mensaje = "";
-            }
-            if (mensaje.equals("otra vez")) {
-                buttonDado.setEnabled(true);
-                valorDado = 0;
-                
-            }else if (mensaje.equals("es tu turno")){
-                buttonDado.setEnabled(true);
-                valorDado =1;
-            }
+
         }
 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AvisoNombre;
-    private javax.swing.JLabel C10;
-    private javax.swing.JLabel C11;
-    private javax.swing.JLabel C12;
-    private javax.swing.JLabel C13;
-    private javax.swing.JLabel C14;
-    private javax.swing.JLabel C15;
-    private javax.swing.JLabel C2;
-    private javax.swing.JLabel C3;
-    private javax.swing.JLabel C4;
-    private javax.swing.JLabel C5;
-    private javax.swing.JLabel C6;
-    private javax.swing.JLabel C7;
-    private javax.swing.JLabel C8;
-    private javax.swing.JLabel C9;
+    private static javax.swing.JLabel C10;
+    private static javax.swing.JLabel C11;
+    private static javax.swing.JLabel C12;
+    private static javax.swing.JLabel C13;
+    private static javax.swing.JLabel C14;
+    private static javax.swing.JLabel C15;
+    private static javax.swing.JLabel C2;
+    private static javax.swing.JLabel C3;
+    private static javax.swing.JLabel C4;
+    private static javax.swing.JLabel C5;
+    private static javax.swing.JLabel C6;
+    private static javax.swing.JLabel C7;
+    private static javax.swing.JLabel C8;
+    private static javax.swing.JLabel C9;
     private javax.swing.JLabel CFinal;
     private javax.swing.JLabel CInicio;
     private javax.swing.JLabel Dado;
