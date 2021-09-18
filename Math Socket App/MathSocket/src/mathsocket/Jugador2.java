@@ -37,6 +37,12 @@ public class Jugador2 extends javax.swing.JFrame {
             + "\\Math Socket App\\MathSocket\\src\\images\\Casilla - trampa.png");
     ImageIcon CasillaTunel = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
             + "\\Math Socket App\\MathSocket\\src\\images\\Casilla - túnel.png");
+    ImageIcon CasillaZero = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
+            + "\\Math Socket App\\MathSocket\\src\\images\\DadoZero.png");
+    ImageIcon fichaJugador1 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
+            + "\\Math Socket App\\MathSocket\\src\\images\\Jugador 1.png");
+    ImageIcon fichaJugador2 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
+            + "\\Math Socket App\\MathSocket\\src\\images\\Jugador 2.png");
 
     static int count = 0;
     static int valorDado = 0;
@@ -413,6 +419,9 @@ public class Jugador2 extends javax.swing.JFrame {
             }
             MainPanel2.setVisible(false);
             PanelJuego2.setVisible(true);
+            
+            
+            
             try {
                 datoSalida.writeUTF("iniciar");
             } catch (IOException ex) {
@@ -461,6 +470,7 @@ public class Jugador2 extends javax.swing.JFrame {
             int numero = Integer.parseInt(mensaje);
             if (numero > num) {
                 buttonDado2.setEnabled(false);
+                valorDado = 1;
                 try {
                     datoSalida.writeUTF("es tu turno");
                 } catch (IOException ex) {
@@ -472,6 +482,7 @@ public class Jugador2 extends javax.swing.JFrame {
                 return;
             } else {
                 buttonDado2.setEnabled(false);
+                Dado2.setIcon(CasillaZero);
                 try {
                     datoSalida.writeUTF("otra vez");
                 } catch (IOException ex) {

@@ -40,6 +40,8 @@ public class Jugador1 extends javax.swing.JFrame {
             + "\\Math Socket App\\MathSocket\\src\\images\\Casilla - trampa.png");
     static ImageIcon CasillaTunel = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
             + "\\Math Socket App\\MathSocket\\src\\images\\Casilla - túnel.png");
+    static ImageIcon CasillaZero = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
+            + "\\Math Socket App\\MathSocket\\src\\images\\DadoZero.png");
 
     static int valorDado = 0;
     static String mensaje = "";
@@ -422,6 +424,7 @@ public class Jugador1 extends javax.swing.JFrame {
                 String digito = String.valueOf(num);
                 datoSalida.writeUTF(digito);
                 buttonDado.setEnabled(false);
+                valorDado=1;
                 switch (num) {
                     case 1:
 
@@ -555,6 +558,7 @@ public class Jugador1 extends javax.swing.JFrame {
                 }
                 if (mensaje.equals("otra vez")) {
                     buttonDado.setEnabled(true);
+                    Dado.setIcon(CasillaZero);
                     valorDado = 0;
 
                 } else if (mensaje.equals("es tu turno")) {
@@ -585,7 +589,7 @@ public class Jugador1 extends javax.swing.JFrame {
     private static javax.swing.JLabel C9;
     private javax.swing.JLabel CFinal;
     private javax.swing.JLabel CInicio;
-    private javax.swing.JLabel Dado;
+    private static javax.swing.JLabel Dado;
     private static javax.swing.JLabel EsperarJugador;
     private static javax.swing.JPanel MainPanel;
     private javax.swing.JTextField Nombre1;
