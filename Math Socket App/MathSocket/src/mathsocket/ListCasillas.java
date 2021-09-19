@@ -28,7 +28,7 @@ public class ListCasillas {
             this.head = newNode;
             newNode.setcoordenadas(ejeX, ejeY);
         } else {
-            if (this.head.getNext().equals(null)) {
+            if (this.head.getNext()==null) {
                 this.head.setNext(newNode);
                 newNode.setTail(this.head);
                 temp = newNode;

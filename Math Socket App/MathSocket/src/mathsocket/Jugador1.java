@@ -25,24 +25,8 @@ import static mathsocket.Jugador2.mensaje;
  * @author lujor
  */
 public class Jugador1 extends javax.swing.JFrame {
-
-    ImageIcon img1 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
-            + "\\Math Socket App\\MathSocket\\src\\images\\DadoOne.png");
-    ImageIcon img2 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
-            + "\\Math Socket App\\MathSocket\\src\\images\\DadoTwo.png");
-    ImageIcon img3 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
-            + "\\Math Socket App\\MathSocket\\src\\images\\DadoThree.png");
-    ImageIcon img4 = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
-            + "\\Math Socket App\\MathSocket\\src\\images\\DadoFour.png");
-    static ImageIcon CasillaReto = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
-            + "\\Math Socket App\\MathSocket\\src\\images\\Casilla - reto.png");
-    static ImageIcon CasillaTrampa = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
-            + "\\Math Socket App\\MathSocket\\src\\images\\Casilla - trampa.png");
-    static ImageIcon CasillaTunel = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
-            + "\\Math Socket App\\MathSocket\\src\\images\\Casilla - túnel.png");
-    static ImageIcon CasillaZero = new ImageIcon("R:\\TEC - II 2021\\Algoritmos y estructura de datos I\\Proyectos\\Proyecto 1\\Aplicación principal"
-            + "\\Math Socket App\\MathSocket\\src\\images\\DadoZero.png");
-
+    
+    static Imagenes imagenes = new Imagenes();
     static int valorDado = 0;
     static String mensaje = "";
     static ServerSocket serverSocket;
@@ -95,7 +79,7 @@ public class Jugador1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MainFrame");
-        setPreferredSize(new java.awt.Dimension(600, 600));
+        setPreferredSize(new java.awt.Dimension(600, 635));
         setResizable(false);
 
         MainPanel.setBackground(new java.awt.Color(0, 51, 255));
@@ -183,73 +167,73 @@ public class Jugador1 extends javax.swing.JFrame {
                 .addComponent(buttonInstru, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(buttonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         PanelJuego.setBackground(new java.awt.Color(0, 153, 153));
         PanelJuego.setPreferredSize(new java.awt.Dimension(600, 600));
 
         CInicio.setBackground(new java.awt.Color(204, 0, 204));
-        CInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        CInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         CInicio.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C2.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C3.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        C8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        C8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C8.setPreferredSize(new java.awt.Dimension(150, 50));
 
         C9.setBackground(new java.awt.Color(204, 0, 204));
-        C9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        C9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C9.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        C7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        C7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C7.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        C6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        C6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C6.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        C4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        C4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C4.setPreferredSize(new java.awt.Dimension(150, 50));
 
         CFinal.setBackground(new java.awt.Color(204, 0, 204));
-        CFinal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - fin2.png"))); // NOI18N
+        CFinal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - fin2.png"))); // NOI18N
         CFinal.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        C10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        C10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C10.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        C11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        C11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C11.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        C5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        C5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C5.setPreferredSize(new java.awt.Dimension(150, 50));
 
         C15.setBackground(new java.awt.Color(204, 0, 204));
-        C15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        C15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C15.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        C13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        C13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C13.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        C12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        C12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C12.setPreferredSize(new java.awt.Dimension(150, 50));
 
         C14.setBackground(new java.awt.Color(204, 0, 204));
-        C14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casilla - inicio2.png"))); // NOI18N
+        C14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C14.setPreferredSize(new java.awt.Dimension(150, 50));
 
-        buttonDado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/interrogation.png"))); // NOI18N
+        buttonDado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/interrogation.png"))); // NOI18N
         buttonDado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buttonDadoMouseClicked(evt);
             }
         });
 
-        Dado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/DadoZero.png"))); // NOI18N
+        Dado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DadoZero.png"))); // NOI18N
 
         javax.swing.GroupLayout PanelJuegoLayout = new javax.swing.GroupLayout(PanelJuego);
         PanelJuego.setLayout(PanelJuegoLayout);
@@ -301,22 +285,25 @@ public class Jugador1 extends javax.swing.JFrame {
                                 .addComponent(C6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(C5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(13, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelJuegoLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(Dado, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonDado)
-                .addGap(40, 40, 40))
+                        .addContainerGap(13, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelJuegoLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(Dado, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonDado)
+                        .addGap(40, 40, 40))))
         );
         PanelJuegoLayout.setVerticalGroup(
             PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelJuegoLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(buttonDado)
-                    .addComponent(Dado, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelJuegoLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(buttonDado))
+                    .addGroup(PanelJuegoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Dado, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(C3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -346,7 +333,7 @@ public class Jugador1 extends javax.swing.JFrame {
                             .addComponent(C14, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(C13, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(C15, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -363,8 +350,8 @@ public class Jugador1 extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PanelJuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(PanelJuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -379,7 +366,7 @@ public class Jugador1 extends javax.swing.JFrame {
 
         String Jugador1 = Nombre1.getText();
         int espacios = 0;
-        //char[] caracteres = Jugador1.toCharArray();
+        
         if (Jugador1.contentEquals("") || Jugador1.length() >= 10) {
             AvisoNombre.setText("¡Nombre no válido!");
             return;
@@ -394,7 +381,6 @@ public class Jugador1 extends javax.swing.JFrame {
             AvisoNombre.setText("¡Nombre Vacío!");
             return;
         } else {
-            int exp = 0;
             EsperarJugador.setText("Esperando Jugador...");
 
         }
@@ -424,26 +410,26 @@ public class Jugador1 extends javax.swing.JFrame {
                 String digito = String.valueOf(num);
                 datoSalida.writeUTF(digito);
                 buttonDado.setEnabled(false);
-                valorDado=1;
+                valorDado = 1;
                 switch (num) {
                     case 1:
 
-                        Dado.setIcon(img1);
+                        Dado.setIcon(imagenes.img1);
                         break;
 
                     case 2:
 
-                        Dado.setIcon(img2);
+                        Dado.setIcon(imagenes.img2);
                         break;
 
                     case 3:
 
-                        Dado.setIcon(img3);
+                        Dado.setIcon(imagenes.img3);
                         break;
 
                     case 4:
 
-                        Dado.setIcon(img4);
+                        Dado.setIcon(imagenes.img4);
                         break;
                 }
             } else {
@@ -451,22 +437,22 @@ public class Jugador1 extends javax.swing.JFrame {
                 switch (num) {
                     case 1:
 
-                        Dado.setIcon(img1);
+                        Dado.setIcon(imagenes.img1);
                         break;
 
                     case 2:
 
-                        Dado.setIcon(img2);
+                        Dado.setIcon(imagenes.img2);
                         break;
 
                     case 3:
 
-                        Dado.setIcon(img3);
+                        Dado.setIcon(imagenes.img3);
                         break;
 
                     case 4:
 
-                        Dado.setIcon(img4);
+                        Dado.setIcon(imagenes.img4);
                         break;
                 }
                 buttonDado.setEnabled(false);
@@ -522,27 +508,35 @@ public class Jugador1 extends javax.swing.JFrame {
             Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
         }
         JLabel[] casillas = new JLabel[]{C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15};
-        boolean exp = true;
+        
         while (true) {
             if (mensaje.equals("casilla")) {
-                for (int i = 0; i < casillas.length; i++) {
-                    try {
-                        mensaje = datoEntrada.readUTF();
-                    } catch (IOException ex) {
-                        Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    int index = Integer.parseInt(mensaje);
-                    JLabel casilla = casillas[i];
-                    switch (index) {
-                        case 1:
-                            casilla.setIcon(CasillaReto);
-                            break;
-                        case 2:
-                            casilla.setIcon(CasillaTrampa);
-                            break;
-                        case 3:
-                            casilla.setIcon(CasillaTunel);
-                            break;
+                ListCasillas coordenadas = new ListCasillas();
+                for (int i = 0; i <= casillas.length; i++) {
+                    if (i != casillas.length) {
+                        try {
+                            mensaje = datoEntrada.readUTF();
+                        } catch (IOException ex) {
+                            Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                        int index = Integer.parseInt(mensaje);
+                        JLabel casilla = casillas[i];
+                        switch (index) {
+                            case 1:
+                                coordenadas.insertLast(casilla.getX(), casilla.getY());
+                                casilla.setIcon(imagenes.CasillaReto);
+                                break;
+                            case 2:
+                                coordenadas.insertLast(casilla.getX(), casilla.getY());
+                                casilla.setIcon(imagenes.CasillaTrampa);
+                                break;
+                            case 3:
+                                coordenadas.insertLast(casilla.getX(), casilla.getY());
+                                casilla.setIcon(imagenes.CasillaTunel);
+                                break;
+                        }
+                    } else {
+                        coordenadas.insertLast(CFinal.getX(), CFinal.getY());
                     }
                 }
             } else {
@@ -558,7 +552,7 @@ public class Jugador1 extends javax.swing.JFrame {
                 }
                 if (mensaje.equals("otra vez")) {
                     buttonDado.setEnabled(true);
-                    Dado.setIcon(CasillaZero);
+                    Dado.setIcon(imagenes.CasillaZero);
                     valorDado = 0;
 
                 } else if (mensaje.equals("es tu turno")) {
@@ -570,7 +564,6 @@ public class Jugador1 extends javax.swing.JFrame {
         }
 
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AvisoNombre;
     private static javax.swing.JLabel C10;
@@ -587,7 +580,7 @@ public class Jugador1 extends javax.swing.JFrame {
     private static javax.swing.JLabel C7;
     private static javax.swing.JLabel C8;
     private static javax.swing.JLabel C9;
-    private javax.swing.JLabel CFinal;
+    private static javax.swing.JLabel CFinal;
     private javax.swing.JLabel CInicio;
     private static javax.swing.JLabel Dado;
     private static javax.swing.JLabel EsperarJugador;
