@@ -20,8 +20,8 @@ public class Imagenes {
     ImageIcon CasillaTrampa = new ImageIcon("Casilla - trampa.png");
     ImageIcon CasillaTunel = new ImageIcon("Casilla - túnel.png");
     ImageIcon CasillaZero = new ImageIcon("DadoZero.png");
-    ImageIcon fichaJugador1 = new ImageIcon("Jugador 1.png");
-    ImageIcon fichaJugador2 = new ImageIcon("Jugador 2.png");
+    //ImageIcon fichaJugador1 = new ImageIcon("Jugador 1.png");
+    //ImageIcon fichaJugador2 = new ImageIcon("Jugador 2.png");
     
     public ImageIcon img1(){
        return  img1;
@@ -47,10 +47,10 @@ public class Imagenes {
     public ImageIcon CasillaZero(){
        return CasillaZero;
     }
-    public ImageIcon fichaJugador1(){
+    /*public ImageIcon fichaJugador1(){
        return fichaJugador1;
     }
     public ImageIcon fichaJugador2(){
        return fichaJugador2;
-    }
+    }*/
 }
