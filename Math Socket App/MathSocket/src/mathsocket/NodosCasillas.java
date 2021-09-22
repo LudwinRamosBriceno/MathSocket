@@ -15,16 +15,24 @@ public class NodosCasillas {
     private int Y;
     public NodosCasillas next;
     private NodosCasillas tail;
+    private int tipoCasilla;
     
     public NodosCasillas() {
         this.X = 0;
         this.Y = 0;
         this.next = null;
         this.tail = null;
+        this.tipoCasilla=0;
     }
     public void setcoordenadas(int ejeX,int ejeY) {
         this.X = ejeX;
         this.Y = ejeY;
+    }
+    public void setTipoCasilla(int tipo){
+        this.tipoCasilla=tipo;
+    }
+    public int getTipoCasilla(){
+        return this.tipoCasilla;
     }
     
     public int getX() {   
@@ -42,7 +50,7 @@ public class NodosCasillas {
     public void setTail(NodosCasillas Node) {
         this.tail = Node;
     }
-    public void getTail(NodosCasillas Node) {
-        this.tail = Node;
+    public NodosCasillas getTail(NodosCasillas Node) {
+        return this.tail;
     }
 }

@@ -25,7 +25,10 @@ import static mathsocket.Jugador2.mensaje;
  * @author lujor
  */
 public class Jugador1 extends javax.swing.JFrame {
-    
+
+    static boolean botonEnabled = true;
+    static ListCasillas coordenadas = new ListCasillas();
+    static int recorrido = 0;
     static Imagenes imagenes = new Imagenes();
     static int valorDado = 0;
     static String mensaje = "";
@@ -314,7 +317,7 @@ public class Jugador1 extends javax.swing.JFrame {
 
         String Jugador1 = Nombre1.getText();
         int espacios = 0;
-        
+
         if (Jugador1.contentEquals("") || Jugador1.length() >= 10) {
             AvisoNombre.setText("¡Nombre no válido!");
             return;
@@ -329,13 +332,11 @@ public class Jugador1 extends javax.swing.JFrame {
             AvisoNombre.setText("¡Nombre Vacío!");
             return;
         } else {
-            fichaJugador1.setLocation(CInicio.getX(),CInicio.getY());
-            fichaJugador2.setLocation(CInicio.getX()+20,CInicio.getY());
+            fichaJugador1.setLocation(CInicio.getX(), CInicio.getY());
+            fichaJugador2.setLocation(CInicio.getX() + 20, CInicio.getY());
             EsperarJugador.setText("Esperando Jugador...");
 
         }
-
-
     }//GEN-LAST:event_buttonJugarAction
 
     private void buttonSalirAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalirAction
@@ -352,64 +353,99 @@ public class Jugador1 extends javax.swing.JFrame {
     }//GEN-LAST:event_Nombre1MousePressed
 
     private void buttonDadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonDadoMouseClicked
-        try {
-            Random numDado = new Random();
-            int num = numDado.nextInt(4) + 1;
-            if (valorDado == 0) {
-                System.out.println("si pasa");
-                String digito = String.valueOf(num);
-                datoSalida.writeUTF(digito);
-                buttonDado.setEnabled(false);
-                valorDado = 1;
-                switch (num) {
-                    case 1:
+        if (botonEnabled) {
+            try {
+                Random numDado = new Random();
+                int num = numDado.nextInt(4) + 1;
+                if (valorDado == 0) {
+                    String digito = String.valueOf(num);
+                    datoSalida.writeUTF(digito);
+                    buttonDado.setEnabled(false);
+                    botonEnabled=false;
+                    valorDado = 1;
+                    switch (num) {
+                        case 1:
 
-                        Dado.setIcon(imagenes.img1);
-                        break;
+                            Dado.setIcon(imagenes.img1);
+                            break;
 
-                    case 2:
+                        case 2:
 
-                        Dado.setIcon(imagenes.img2);
-                        break;
+                            Dado.setIcon(imagenes.img2);
+                            break;
 
-                    case 3:
+                        case 3:
 
-                        Dado.setIcon(imagenes.img3);
-                        break;
+                            Dado.setIcon(imagenes.img3);
+                            break;
 
-                    case 4:
+                        case 4:
 
-                        Dado.setIcon(imagenes.img4);
-                        break;
+                            Dado.setIcon(imagenes.img4);
+                            break;
+                    }
+                } else {
+                    recorrido += num;
+                    int numTunel = numDado.nextInt(3) + 1;
+                    int[] coordenadasCasilla;
+                    coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                    System.out.println("Random de casilla: "+numTunel);
+                    if (recorrido >= 16) {
+                        recorrido = 16;
+                        coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                        fichaJugador1.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
+                    } else if (coordenadasCasilla[2] == 1) {
+                        recorrido = recorrido;
+                        coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                        fichaJugador1.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
+                    } else if (coordenadasCasilla[2] == 2) {
+                        recorrido -= numTunel;
+                        if (recorrido <= 1) {
+                            recorrido = 0;
+                            fichaJugador1.setLocation(CInicio.getX(), CInicio.getY());
+                        } else {
+                            coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                            fichaJugador1.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
+                        }
+                    } else {
+                        recorrido+=numTunel;
+                        coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                        fichaJugador1.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
+                    }
+                    
+                    String msjRecorrido = String.valueOf(recorrido);
+                    datoSalida.writeUTF("es tu turno\n" + msjRecorrido);
+
+                    switch (num) {
+                        case 1:
+
+                            Dado.setIcon(imagenes.img1);
+                            break;
+
+                        case 2:
+
+                            Dado.setIcon(imagenes.img2);
+                            break;
+
+                        case 3:
+
+                            Dado.setIcon(imagenes.img3);
+                            break;
+
+                        case 4:
+
+                            Dado.setIcon(imagenes.img4);
+                            break;
+                    }
+                    buttonDado.setEnabled(false);
+                    botonEnabled=false;
+
                 }
-            } else {
-                datoSalida.writeUTF("es tu turno");
-                switch (num) {
-                    case 1:
-
-                        Dado.setIcon(imagenes.img1);
-                        break;
-
-                    case 2:
-
-                        Dado.setIcon(imagenes.img2);
-                        break;
-
-                    case 3:
-
-                        Dado.setIcon(imagenes.img3);
-                        break;
-
-                    case 4:
-
-                        Dado.setIcon(imagenes.img4);
-                        break;
-                }
-                buttonDado.setEnabled(false);
+                System.out.println(num);
+            } catch (IOException ex) {
+                Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println(num);
-        } catch (IOException ex) {
-            Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
     }//GEN-LAST:event_buttonDadoMouseClicked
 
@@ -458,10 +494,15 @@ public class Jugador1 extends javax.swing.JFrame {
             Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
         }
         JLabel[] casillas = new JLabel[]{C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15};
-        
+
         while (true) {
+            try {
+                mensaje = datoEntrada.readUTF();
+            } catch (IOException ex) {
+                Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
+            }
             if (mensaje.equals("casilla")) {
-                ListCasillas coordenadas = new ListCasillas();
+
                 for (int i = 0; i <= casillas.length; i++) {
                     if (i != casillas.length) {
                         try {
@@ -469,45 +510,78 @@ public class Jugador1 extends javax.swing.JFrame {
                         } catch (IOException ex) {
                             Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
                         }
+                        //System.out.println(mensaje);
                         int index = Integer.parseInt(mensaje);
                         JLabel casilla = casillas[i];
                         switch (index) {
                             case 1:
-                                coordenadas.insertLast(casilla.getX(), casilla.getY());
+                                coordenadas.insertLast(casilla.getX(), casilla.getY(), index);
                                 casilla.setIcon(imagenes.CasillaReto);
                                 break;
                             case 2:
-                                coordenadas.insertLast(casilla.getX(), casilla.getY());
+                                coordenadas.insertLast(casilla.getX(), casilla.getY(), index);
                                 casilla.setIcon(imagenes.CasillaTrampa);
                                 break;
                             case 3:
-                                coordenadas.insertLast(casilla.getX(), casilla.getY());
+                                coordenadas.insertLast(casilla.getX(), casilla.getY(), index);
                                 casilla.setIcon(imagenes.CasillaTunel);
                                 break;
                         }
                     } else {
-                        coordenadas.insertLast(CFinal.getX(), CFinal.getY());
+                        coordenadas.insertFinal(CFinal.getX(), CFinal.getY());
                     }
+                    //mensaje="iniciar";
                 }
             } else {
-                try {
-                    mensaje = datoEntrada.readUTF();
-                } catch (IOException ex) {
-                    Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                //System.out.println(mensaje);
                 if (mensaje.equals("iniciar")) {
+                    //System.out.println("si pasa");
                     MainPanel.setVisible(false);
                     PanelJuego.setVisible(true);
+                    System.out.println("panel");
                     mensaje = "";
-                }
-                if (mensaje.equals("otra vez")) {
+                } else if (mensaje.equals("otra vez")) {
                     buttonDado.setEnabled(true);
+                    botonEnabled=true;
                     Dado.setIcon(imagenes.CasillaZero);
+                    recorrido = 0;
                     valorDado = 0;
 
                 } else if (mensaje.equals("es tu turno")) {
                     buttonDado.setEnabled(true);
+                    botonEnabled=true;
                     valorDado = 1;
+                } else {
+                    /*ListCasillas ubicaciónFicha = new ListCasillas();
+                    coordenadasCasilla = ubicaciónFicha.ObtenerCoordenadas(recorrido);*/
+                    if (mensaje.equals("")) {
+                        System.out.println("vacio");
+                        fichaJugador2.setLocation(fichaJugador2.getX(), fichaJugador2.getY());
+                    } else {
+                        String[] msjAvance = mensaje.split("\n");
+                        int AvanceFicha2 = Integer.parseInt(msjAvance[1]);
+                        //ListCasillas ubicaciónFicha = new ListCasillas();
+                        if (AvanceFicha2 <= 0) {
+                            fichaJugador2.setLocation(fichaJugador2.getX(), fichaJugador2.getY());
+                            buttonDado.setEnabled(true);
+                            botonEnabled=true;
+                        } else {
+                            int[] coordenadasCasilla;
+                            coordenadasCasilla = coordenadas.ObtenerCoordenadas(AvanceFicha2);
+                            fichaJugador2.setLocation(coordenadasCasilla[0] + 20, coordenadasCasilla[1]);
+                            buttonDado.setEnabled(true);
+                            botonEnabled=true;
+                        }
+
+                    }
+
+                    /*
+                    
+                    if (coordenadasCasilla==null){
+                        
+                    }else{
+                        fichaJugador2.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
+                    }*/
                 }
             }
 
@@ -542,6 +616,6 @@ public class Jugador1 extends javax.swing.JFrame {
     private javax.swing.JButton buttonJugar;
     private javax.swing.JButton buttonSalir;
     private javax.swing.JLabel fichaJugador1;
-    private javax.swing.JLabel fichaJugador2;
+    private static javax.swing.JLabel fichaJugador2;
     // End of variables declaration//GEN-END:variables
 }

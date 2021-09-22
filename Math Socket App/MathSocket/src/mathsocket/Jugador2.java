@@ -23,6 +23,9 @@ import static mathsocket.Jugador1.datoSalida;
  */
 public class Jugador2 extends javax.swing.JFrame {
 
+    static boolean botonEnabled = false;
+    static ListCasillas coordenadas = new ListCasillas();
+    int recorrido = 0;
     Imagenes imagenes = new Imagenes();
     static int count = 0;
     static int valorDado = 0;
@@ -54,6 +57,8 @@ public class Jugador2 extends javax.swing.JFrame {
         AvisoNombre = new javax.swing.JLabel();
         buttonInstru2 = new javax.swing.JButton();
         PanelJuego2 = new javax.swing.JPanel();
+        fichaJugador2 = new javax.swing.JLabel();
+        fichaJugador1 = new javax.swing.JLabel();
         CInicio = new javax.swing.JLabel();
         C2 = new javax.swing.JLabel();
         C3 = new javax.swing.JLabel();
@@ -154,64 +159,107 @@ public class Jugador2 extends javax.swing.JFrame {
                 .addComponent(buttonInstru2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(buttonSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         PanelJuego2.setBackground(new java.awt.Color(255, 51, 51));
         PanelJuego2.setPreferredSize(new java.awt.Dimension(600, 600));
+        PanelJuego2.setLayout(null);
+
+        fichaJugador2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Jugador 2.png"))); // NOI18N
+        fichaJugador2.setText("jLabel1");
+        PanelJuego2.add(fichaJugador2);
+        fichaJugador2.setBounds(220, 50, 40, 40);
+
+        fichaJugador1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Jugador 1.png"))); // NOI18N
+        fichaJugador1.setText("sdad");
+        PanelJuego2.add(fichaJugador1);
+        fichaJugador1.setBounds(160, 50, 40, 40);
 
         CInicio.setBackground(new java.awt.Color(204, 0, 204));
         CInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         CInicio.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(CInicio);
+        CInicio.setBounds(10, 135, 130, 87);
 
         C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C2.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(C2);
+        C2.setBounds(158, 135, 130, 87);
 
         C3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C3.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(C3);
+        C3.setBounds(294, 135, 130, 87);
 
         C8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C8.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(C8);
+        C8.setBounds(14, 255, 130, 87);
 
         C9.setBackground(new java.awt.Color(204, 0, 204));
         C9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C9.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(C9);
+        C9.setBounds(10, 371, 130, 87);
 
         C7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C7.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(C7);
+        C7.setBounds(150, 255, 130, 87);
 
         C6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C6.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(C6);
+        C6.setBounds(298, 255, 130, 87);
 
         C4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C4.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(C4);
+        C4.setBounds(442, 135, 130, 87);
 
         CFin.setBackground(new java.awt.Color(204, 0, 204));
         CFin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - fin2.png"))); // NOI18N
         CFin.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(CFin);
+        CFin.setBounds(10, 487, 130, 87);
 
         C10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C10.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(C10);
+        C10.setBounds(160, 371, 130, 87);
 
         C11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C11.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(C11);
+        C11.setBounds(308, 371, 130, 87);
 
         C5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C5.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(C5);
+        C5.setBounds(446, 255, 130, 87);
 
         C15.setBackground(new java.awt.Color(204, 0, 204));
         C15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C15.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(C15);
+        C15.setBounds(150, 487, 130, 87);
 
         C13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C13.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(C13);
+        C13.setBounds(444, 487, 130, 87);
 
         C12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C12.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(C12);
+        C12.setBounds(444, 371, 130, 87);
 
         C14.setBackground(new java.awt.Color(204, 0, 204));
         C14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C14.setPreferredSize(new java.awt.Dimension(150, 50));
+        PanelJuego2.add(C14);
+        C14.setBounds(298, 487, 130, 87);
 
         buttonDado2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/interrogation.png"))); // NOI18N
         buttonDado2.setEnabled(false);
@@ -220,104 +268,12 @@ public class Jugador2 extends javax.swing.JFrame {
                 buttonDado2MouseClicked(evt);
             }
         });
+        PanelJuego2.add(buttonDado2);
+        buttonDado2.setBounds(470, 22, 80, 80);
 
         Dado2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DadoZero.png"))); // NOI18N
-
-        javax.swing.GroupLayout PanelJuego2Layout = new javax.swing.GroupLayout(PanelJuego2);
-        PanelJuego2.setLayout(PanelJuego2Layout);
-        PanelJuego2Layout.setHorizontalGroup(
-            PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelJuego2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelJuego2Layout.createSequentialGroup()
-                        .addComponent(CInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(C2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(C3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(C4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(PanelJuego2Layout.createSequentialGroup()
-                        .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelJuego2Layout.createSequentialGroup()
-                                .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CFin, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PanelJuego2Layout.createSequentialGroup()
-                                        .addComponent(C15, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(C14, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(PanelJuego2Layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(C10, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(C11, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(C13, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(C12, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(PanelJuego2Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(C8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(C7, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(C6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(C5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(24, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelJuego2Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(Dado2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(buttonDado2)
-                .addGap(50, 50, 50))
-        );
-        PanelJuego2Layout.setVerticalGroup(
-            PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelJuego2Layout.createSequentialGroup()
-                .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelJuego2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Dado2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelJuego2Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(buttonDado2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(C4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(C3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(C2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(C7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(C8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(C6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(C5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelJuego2Layout.createSequentialGroup()
-                        .addComponent(C9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(CFin, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PanelJuego2Layout.createSequentialGroup()
-                        .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(C11, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(C10, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(C12, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(29, 29, 29)
-                        .addGroup(PanelJuego2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(C14, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(C13, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(C15, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(26, 26, 26))
-        );
+        PanelJuego2.add(Dado2);
+        Dado2.setBounds(27, 11, 83, 83);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -377,7 +333,7 @@ public class Jugador2 extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
             }
-            ListCasillas coordenadas = new ListCasillas();
+            //ListCasillas coordenadas = new ListCasillas();
             for (int i = 0; i <= casillas.length; i++) {
                 if (i != casillas.length) {
                     JLabel casilla = casillas[i];
@@ -389,20 +345,20 @@ public class Jugador2 extends javax.swing.JFrame {
                     }
                     switch (casillasRandom[i]) {
                         case 1:
-                            coordenadas.insertLast(casilla.getX(), casilla.getY());
+                            coordenadas.insertLast(casilla.getX(), casilla.getY(), casillasRandom[i]);
                             casilla.setIcon(imagenes.CasillaReto);
                             break;
                         case 2:
-                            coordenadas.insertLast(casilla.getX(), casilla.getY());
+                            coordenadas.insertLast(casilla.getX(), casilla.getY(), casillasRandom[i]);
                             casilla.setIcon(imagenes.CasillaTrampa);
                             break;
                         case 3:
-                            coordenadas.insertLast(casilla.getX(), casilla.getY());
+                            coordenadas.insertLast(casilla.getX(), casilla.getY(), casillasRandom[i]);
                             casilla.setIcon(imagenes.CasillaTunel);
                             break;
                     }
                 } else {
-                    coordenadas.insertLast(CFin.getX(), CFin.getY());
+                    coordenadas.insertFinal(CFin.getX(), CFin.getY());
                 }
             }
             MainPanel2.setVisible(false);
@@ -413,6 +369,8 @@ public class Jugador2 extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
             }
+            fichaJugador1.setLocation(CInicio.getX() + 20, CInicio.getY());
+            fichaJugador2.setLocation(CInicio.getX(), CInicio.getY());
         }
 
     }//GEN-LAST:event_buttonJugar2Action
@@ -426,83 +384,120 @@ public class Jugador2 extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonInstru2Action
 
     private void buttonDado2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonDado2MouseClicked
-
-        Random numDado = new Random();
-        int num = numDado.nextInt(4) + 1;
-
-        if (valorDado == 0) {
-            valorDado = num;
-            switch (num) {
-                case 1:
-                    Dado2.setIcon(imagenes.img1);
-                    break;
-
-                case 2:
-                    Dado2.setIcon(imagenes.img2);
-                    break;
-
-                case 3:
-                    Dado2.setIcon(imagenes.img3);
-                    break;
-
-                case 4:
-                    Dado2.setIcon(imagenes.img4);
-                    break;
-            }
-            int numero = Integer.parseInt(mensaje);
-            if (numero > num) {
-                buttonDado2.setEnabled(false);
+        if (botonEnabled) {
+            Random numDado = new Random();
+            int num = numDado.nextInt(4) + 1;
+            if (valorDado == 0) {
                 valorDado = 1;
+                switch (num) {
+                    case 1:
+                        Dado2.setIcon(imagenes.img1);
+                        break;
+
+                    case 2:
+                        Dado2.setIcon(imagenes.img2);
+                        break;
+
+                    case 3:
+                        Dado2.setIcon(imagenes.img3);
+                        break;
+
+                    case 4:
+                        Dado2.setIcon(imagenes.img4);
+                        break;
+                }
+                int numero = Integer.parseInt(mensaje);
+                if (numero > num) {
+                    buttonDado2.setEnabled(false);
+                    botonEnabled = false;
+                    valorDado = 1;
+                    try {
+                        datoSalida.writeUTF("es tu turno");
+                    } catch (IOException ex) {
+                        Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    mensaje = "";
+                } else if (numero < num) {
+                    valorDado = 1;
+                    mensaje = "";
+                    return;
+                } else {
+                    buttonDado2.setEnabled(false);
+                    botonEnabled = false;
+                    Dado2.setIcon(imagenes.CasillaZero);
+                    recorrido = 0;
+                    try {
+                        datoSalida.writeUTF("otra vez");
+                    } catch (IOException ex) {
+                        Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    valorDado = 0;
+                    count = 0;
+                    mensaje = "";
+                }
+            } else /*if (mensaje.equals("es tu turno"))*/ {
+                recorrido += num;
+                int numTunel = numDado.nextInt(3) + 1;
+                int[] coordenadasCasilla;
+                coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                System.out.println("Random de casilla: "+numTunel);
+                if (recorrido >= 16) {
+                    recorrido = 16;
+                    coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                    fichaJugador2.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
+                } else if (coordenadasCasilla[2] == 1) {
+                    recorrido = recorrido;
+                    coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                    fichaJugador2.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
+                } else if (coordenadasCasilla[2] == 2) {
+                    recorrido -= numTunel;
+                    if (recorrido <= 0) {
+                        recorrido = 0;
+                        fichaJugador2.setLocation(CInicio.getX(), CInicio.getY());
+                    } else {
+                        coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                        fichaJugador2.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
+                    }
+                } else {
+                    recorrido += numTunel;
+                    coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                    fichaJugador2.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
+                }
+
+                String msjRecorrido = String.valueOf(recorrido);
+
                 try {
-                    datoSalida.writeUTF("es tu turno");
+                    datoSalida.writeUTF("es tu turno\n" + msjRecorrido);
                 } catch (IOException ex) {
                     Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            } else if (numero < num) {
-                mensaje = "es tu turno";
-                valorDado = 1;
-                return;
-            } else {
-                buttonDado2.setEnabled(false);
-                Dado2.setIcon(imagenes.CasillaZero);
-                try {
-                    datoSalida.writeUTF("otra vez");
-                } catch (IOException ex) {
-                    Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+                switch (num) {
+                    case 1:
+
+                        Dado2.setIcon(imagenes.img1);
+                        break;
+
+                    case 2:
+
+                        Dado2.setIcon(imagenes.img2);
+                        break;
+
+                    case 3:
+
+                        Dado2.setIcon(imagenes.img3);
+                        break;
+
+                    case 4:
+
+                        Dado2.setIcon(imagenes.img4);
+                        break;
                 }
-                valorDado = 0;
-                count = 0;
+                buttonDado2.setEnabled(false);
+                botonEnabled = false;
+
             }
-        } else if (mensaje.equals("es tu turno")) {
-            buttonDado2.setEnabled(false);
-            try {
-                datoSalida.writeUTF("es tu turno");
-            } catch (IOException ex) {
-                Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            switch (num) {
-                case 1:
-
-                    Dado2.setIcon(imagenes.img1);
-                    break;
-
-                case 2:
-
-                    Dado2.setIcon(imagenes.img2);
-                    break;
-
-                case 3:
-
-                    Dado2.setIcon(imagenes.img3);
-                    break;
-
-                case 4:
-
-                    Dado2.setIcon(imagenes.img4);
-                    break;
-            }
+            System.out.println(num);
         }
-        System.out.println(num);
     }//GEN-LAST:event_buttonDado2MouseClicked
 
     /**
@@ -552,9 +547,26 @@ public class Jugador2 extends javax.swing.JFrame {
                 }
                 if (valorDado == 0 && !mensaje.equals("") && count == 0) {
                     buttonDado2.setEnabled(true);
-                    count = 1;
-                } else if (mensaje.equals("es tu turno")) {
+                    botonEnabled = true;
+
+                } else /*(mensaje.equals("es tu turno"))*/ {
+                    if (mensaje.equals("")) {
+                        fichaJugador1.setLocation(fichaJugador1.getX(), fichaJugador1.getY());
+                    } else {
+                        String[] msjAvance = mensaje.split("\n");
+                        int AvanceFicha1 = Integer.parseInt(msjAvance[1]);
+                        //ListCasillas ubicaciónFicha = new ListCasillas();
+                        if (AvanceFicha1 <= 0) {
+                            fichaJugador1.setLocation(fichaJugador1.getX(), fichaJugador1.getY());
+                        } else {
+                            int[] coordenadasCasilla;
+                            coordenadasCasilla = coordenadas.ObtenerCoordenadas(AvanceFicha1);
+                            fichaJugador1.setLocation(coordenadasCasilla[0] + 20, coordenadasCasilla[1]);
+                        }
+
+                    }
                     buttonDado2.setEnabled(true);
+                    botonEnabled = true;
                 }
             }
         } catch (IOException ex) {
@@ -588,5 +600,7 @@ public class Jugador2 extends javax.swing.JFrame {
     private javax.swing.JButton buttonInstru2;
     private javax.swing.JButton buttonJugar2;
     private javax.swing.JButton buttonSalir2;
+    private static javax.swing.JLabel fichaJugador1;
+    private static javax.swing.JLabel fichaJugador2;
     // End of variables declaration//GEN-END:variables
 }
