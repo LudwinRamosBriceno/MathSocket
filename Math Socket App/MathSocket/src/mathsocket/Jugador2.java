@@ -15,7 +15,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import static mathsocket.Jugador1.datoSalida;
+import javax.swing.JOptionPane;
+import static javax.swing.SwingConstants.CENTER;
+import static javax.swing.SwingConstants.TOP;
+//import static mathsocket.Jugador1.datoSalida;
 
 /**
  *
@@ -23,6 +26,7 @@ import static mathsocket.Jugador1.datoSalida;
  */
 public class Jugador2 extends javax.swing.JFrame {
 
+    int Respuesta = 0;
     static boolean botonEnabled = false;
     static ListCasillas coordenadas = new ListCasillas();
     int recorrido = 0;
@@ -39,6 +43,9 @@ public class Jugador2 extends javax.swing.JFrame {
      */
     public Jugador2() {
         initComponents();
+        botonRespuesta.setVisible(false);
+        TextRespuesta.setVisible(false);
+        LabelPregunta.setVisible(false);
     }
 
     /**
@@ -57,6 +64,9 @@ public class Jugador2 extends javax.swing.JFrame {
         AvisoNombre = new javax.swing.JLabel();
         buttonInstru2 = new javax.swing.JButton();
         PanelJuego2 = new javax.swing.JPanel();
+        botonRespuesta = new javax.swing.JButton();
+        TextRespuesta = new javax.swing.JTextField();
+        LabelPregunta = new javax.swing.JLabel();
         fichaJugador2 = new javax.swing.JLabel();
         fichaJugador1 = new javax.swing.JLabel();
         CInicio = new javax.swing.JLabel();
@@ -166,15 +176,41 @@ public class Jugador2 extends javax.swing.JFrame {
         PanelJuego2.setPreferredSize(new java.awt.Dimension(600, 600));
         PanelJuego2.setLayout(null);
 
+        botonRespuesta.setText("Enviar");
+        botonRespuesta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRespuestaAction(evt);
+            }
+        });
+        PanelJuego2.add(botonRespuesta);
+        botonRespuesta.setBounds(270, 80, 63, 23);
+
+        TextRespuesta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextRespuestaActionPerformed(evt);
+            }
+        });
+        PanelJuego2.add(TextRespuesta);
+        TextRespuesta.setBounds(220, 40, 170, 30);
+
+        LabelPregunta.setBackground(new java.awt.Color(204, 204, 204));
+        LabelPregunta.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        LabelPregunta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LabelPregunta.setText("Pregunta");
+        LabelPregunta.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        LabelPregunta.setOpaque(true);
+        PanelJuego2.add(LabelPregunta);
+        LabelPregunta.setBounds(190, 10, 230, 100);
+
         fichaJugador2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Jugador 2.png"))); // NOI18N
         fichaJugador2.setText("jLabel1");
         PanelJuego2.add(fichaJugador2);
-        fichaJugador2.setBounds(220, 50, 40, 40);
+        fichaJugador2.setBounds(80, 100, 40, 40);
 
         fichaJugador1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Jugador 1.png"))); // NOI18N
         fichaJugador1.setText("sdad");
         PanelJuego2.add(fichaJugador1);
-        fichaJugador1.setBounds(160, 50, 40, 40);
+        fichaJugador1.setBounds(30, 100, 40, 40);
 
         CInicio.setBackground(new java.awt.Color(204, 0, 204));
         CInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
@@ -382,11 +418,72 @@ public class Jugador2 extends javax.swing.JFrame {
     private void buttonInstru2Action(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInstru2Action
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonInstru2Action
+    public void PreguntaReto() {
+        botonRespuesta.setVisible(true);
+        TextRespuesta.setVisible(true);
+        LabelPregunta.setVisible(true);
+        Random numReto = new Random();
+        int num1 = numReto.nextInt(50) + 1;
+        int num2 = numReto.nextInt(50) + 1;
+        int operador = numReto.nextInt(4) + 1;
+        System.out.println("Operador es: " + operador);
+        switch (operador) {
+            case 1:
+                Respuesta = num1 + num2;
+                LabelPregunta.setText("¿Cuanto es: " + num1 + " + " + num2+"?");
+                try {
+                    datoSalida.writeUTF(LabelPregunta.getText() + "\n" + "pregunta");
+                } catch (IOException ex) {
+                    Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+            case 2:
+                Respuesta = num1 - num2;
+                LabelPregunta.setText("¿Cuanto es: " + num1 + " - " + num2+"?");
+                try {
+                    datoSalida.writeUTF(LabelPregunta.getText() + "\n" + "pregunta");
+                } catch (IOException ex) {
+                    Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+            case 3:
+                Respuesta = num1 * num2;
+                LabelPregunta.setText("¿Cuanto es: " + num1 + " x " + num2+"?");
+                try {
+                    datoSalida.writeUTF(LabelPregunta.getText() + "\n" + "pregunta");
+                } catch (IOException ex) {
+                    Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+            case 4:
+                Respuesta = num1 / num2;
+                LabelPregunta.setText("¿Cuanto es: " + num1 + " ÷ " + num2+"?");
+                try {
+                    datoSalida.writeUTF(LabelPregunta.getText() + "\n" + "pregunta");
+                } catch (IOException ex) {
+                    Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                break;
+        }
+        buttonDado2.setEnabled(false);
+        botonEnabled = false;
+        String msjRecorrido = String.valueOf(recorrido);
+        try {
+            datoSalida.writeUTF("esperando\n" + msjRecorrido);
+        } catch (IOException ex) {
+            Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return;
+    }
 
     private void buttonDado2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonDado2MouseClicked
         if (botonEnabled) {
+            LabelPregunta.setVerticalAlignment(TOP);
+            LabelPregunta.setVisible(false);
             Random numDado = new Random();
             int num = numDado.nextInt(4) + 1;
+            System.out.println("dado: " + num);
             if (valorDado == 0) {
                 valorDado = 1;
                 switch (num) {
@@ -435,42 +532,7 @@ public class Jugador2 extends javax.swing.JFrame {
                     count = 0;
                     mensaje = "";
                 }
-            } else /*if (mensaje.equals("es tu turno"))*/ {
-                recorrido += num;
-                int numTunel = numDado.nextInt(3) + 1;
-                int[] coordenadasCasilla;
-                coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
-                System.out.println("Random de casilla: "+numTunel);
-                if (recorrido >= 16) {
-                    recorrido = 16;
-                    coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
-                    fichaJugador2.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
-                } else if (coordenadasCasilla[2] == 1) {
-                    recorrido = recorrido;
-                    coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
-                    fichaJugador2.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
-                } else if (coordenadasCasilla[2] == 2) {
-                    recorrido -= numTunel;
-                    if (recorrido <= 0) {
-                        recorrido = 0;
-                        fichaJugador2.setLocation(CInicio.getX(), CInicio.getY());
-                    } else {
-                        coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
-                        fichaJugador2.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
-                    }
-                } else {
-                    recorrido += numTunel;
-                    coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
-                    fichaJugador2.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
-                }
-
-                String msjRecorrido = String.valueOf(recorrido);
-
-                try {
-                    datoSalida.writeUTF("es tu turno\n" + msjRecorrido);
-                } catch (IOException ex) {
-                    Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            } else {
                 switch (num) {
                     case 1:
 
@@ -492,13 +554,96 @@ public class Jugador2 extends javax.swing.JFrame {
                         Dado2.setIcon(imagenes.img4);
                         break;
                 }
+                recorrido += num;
+                int numTunel = numDado.nextInt(3) + 1;
+                int[] coordenadasCasilla;
+                coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                
+                if (recorrido >= 16) {
+                    recorrido = 16;
+                    coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                    fichaJugador2.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
+
+                } else if (coordenadasCasilla[2] == 1) {
+                    PreguntaReto();
+                    coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                    fichaJugador2.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
+                    return;
+
+                } else if (coordenadasCasilla[2] == 2) {
+                    
+                    recorrido -= numTunel;
+                    if (recorrido <= 0) {
+                        recorrido = 0;
+                        fichaJugador2.setLocation(CInicio.getX(), CInicio.getY());
+                    } else {
+                        coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                        fichaJugador2.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
+                    }
+
+                } else {
+                    
+                    recorrido += numTunel;
+                    coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                    fichaJugador2.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
+                }
+
+                String msjRecorrido = String.valueOf(recorrido);
+
+                try {
+                    datoSalida.writeUTF("es tu turno\n" + msjRecorrido);
+                } catch (IOException ex) {
+                    Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
                 buttonDado2.setEnabled(false);
                 botonEnabled = false;
 
             }
-            System.out.println(num);
         }
     }//GEN-LAST:event_buttonDado2MouseClicked
+
+    private void botonRespuestaAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRespuestaAction
+        int RespuestaJugador = Integer.parseInt(TextRespuesta.getText());
+        if ((Character.isDefined(RespuestaJugador) && RespuestaJugador == Respuesta)||(RespuestaJugador < 0 && RespuestaJugador == Respuesta)) {
+            JOptionPane.showMessageDialog(null, "Respuesta Correcta");
+            try {
+                datoSalida.writeUTF("correcto");
+            } catch (IOException ex) {
+                Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            botonRespuesta.setVisible(false);
+            TextRespuesta.setVisible(false);
+            LabelPregunta.setVisible(false);
+
+        } else if ((Character.isDefined(RespuestaJugador) && RespuestaJugador != Respuesta)||(RespuestaJugador<0&& RespuestaJugador != Respuesta)) {
+            JOptionPane.showMessageDialog(null, "Respuesta Incorrecta");
+            recorrido-=1;
+            int[] coordenadasCasilla;
+            botonRespuesta.setVisible(false);
+            TextRespuesta.setVisible(false);
+            LabelPregunta.setVisible(false);
+            if (recorrido <= 0) {
+                recorrido = 0;
+                fichaJugador2.setLocation(CInicio.getX(), CInicio.getY());
+            } else {
+                coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
+                fichaJugador2.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
+            }
+            String msjRecorrido = String.valueOf(recorrido);
+            try {
+                datoSalida.writeUTF("es tu turno\n" + msjRecorrido);
+            } catch (IOException ex) {
+                Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            TextRespuesta.setText("");
+        }
+    }//GEN-LAST:event_botonRespuestaAction
+
+    private void TextRespuestaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextRespuestaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextRespuestaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -545,28 +690,51 @@ public class Jugador2 extends javax.swing.JFrame {
                 } catch (IOException ex) {
                     Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
                 }
+
                 if (valorDado == 0 && !mensaje.equals("") && count == 0) {
                     buttonDado2.setEnabled(true);
                     botonEnabled = true;
 
-                } else /*(mensaje.equals("es tu turno"))*/ {
+                } else  {
+                    String[] msjAvance = mensaje.split("\n");
                     if (mensaje.equals("")) {
-                        fichaJugador1.setLocation(fichaJugador1.getX(), fichaJugador1.getY());
+                        fichaJugador1.setLocation(fichaJugador1.getX()+20, fichaJugador1.getY());
+
+                    } else if (mensaje.equals("correcto")) {
+                        fichaJugador1.setLocation(fichaJugador1.getX()+20, fichaJugador1.getY());
+                        buttonDado2.setEnabled(true);
+                        LabelPregunta.setText("Respuesta correcta");
+                        botonEnabled = true;
+                    }else if(msjAvance[1].equals("pregunta")){
+                        LabelPregunta.setVisible(true);
+                        LabelPregunta.setVerticalAlignment(CENTER);
+                        LabelPregunta.setText("<html>¡Reto para Oponente!<p><p>"+msjAvance[0]+"<p></html>");
+                        
+                        
                     } else {
-                        String[] msjAvance = mensaje.split("\n");
+                        
                         int AvanceFicha1 = Integer.parseInt(msjAvance[1]);
-                        //ListCasillas ubicaciónFicha = new ListCasillas();
+                        
                         if (AvanceFicha1 <= 0) {
-                            fichaJugador1.setLocation(fichaJugador1.getX(), fichaJugador1.getY());
-                        } else {
+                            fichaJugador1.setLocation(CInicio.getX()+20, CInicio.getY());
+                            buttonDado2.setEnabled(true);
+                            botonEnabled = true;
+                        
+                        } else if (msjAvance[0].equals("esperando")) {
                             int[] coordenadasCasilla;
                             coordenadasCasilla = coordenadas.ObtenerCoordenadas(AvanceFicha1);
                             fichaJugador1.setLocation(coordenadasCasilla[0] + 20, coordenadasCasilla[1]);
+                        } else {
+                            LabelPregunta.setText("Respuesta incorrecta");
+                            int[] coordenadasCasilla;
+                            coordenadasCasilla = coordenadas.ObtenerCoordenadas(AvanceFicha1);
+                            fichaJugador1.setLocation(coordenadasCasilla[0] + 20, coordenadasCasilla[1]);
+                            buttonDado2.setEnabled(true);
+                            botonEnabled = true;
                         }
 
                     }
-                    buttonDado2.setEnabled(true);
-                    botonEnabled = true;
+
                 }
             }
         } catch (IOException ex) {
@@ -591,11 +759,14 @@ public class Jugador2 extends javax.swing.JFrame {
     private javax.swing.JLabel C8;
     private javax.swing.JLabel C9;
     private javax.swing.JLabel CFin;
-    private javax.swing.JLabel CInicio;
+    private static javax.swing.JLabel CInicio;
     private javax.swing.JLabel Dado2;
+    private static javax.swing.JLabel LabelPregunta;
     private static javax.swing.JPanel MainPanel2;
     private javax.swing.JTextField Nombre2;
     private static javax.swing.JPanel PanelJuego2;
+    private javax.swing.JTextField TextRespuesta;
+    private javax.swing.JButton botonRespuesta;
     private static javax.swing.JLabel buttonDado2;
     private javax.swing.JButton buttonInstru2;
     private javax.swing.JButton buttonJugar2;
