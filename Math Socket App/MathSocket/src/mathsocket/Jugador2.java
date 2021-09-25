@@ -437,7 +437,9 @@ public class Jugador2 extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSalir2Action
 
     private void buttonInstru2Action(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInstru2Action
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "Instrucciones:\n\n1. Ingresa tu nombre.\n2. Se asigna la ficha gris al jugador 1"
+                + " y la ficha rosa al jugador 2.\n3. El primer turno se decide al lanzar el dado, si ambos son iguales se"
+                + " lanza una vez más.\n4. Gana el primero en llegar a la casilla \"Fin \". ");   
     }//GEN-LAST:event_buttonInstru2Action
     public void PreguntaReto() {
         botonRespuesta.setVisible(true);
