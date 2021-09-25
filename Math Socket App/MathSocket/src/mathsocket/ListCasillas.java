@@ -21,7 +21,7 @@ public class ListCasillas {
     public boolean isEmpty() {
         return this.head == null;
     }
-
+    
     public void insertLast(int ejeX, int ejeY,int tipo) {
         NodosCasillas newNode = new NodosCasillas();
         if (isEmpty()) {

@@ -30,7 +30,9 @@ import static mathsocket.Jugador2.mensaje;
  */
 public class Jugador1 extends javax.swing.JFrame {
     
-    static int close=1;
+    static String Jugador1;
+    static String Jugador2;
+    static int close = 1;
     int Respuesta = 0;
     static boolean botonEnabled = true;
     static ListCasillas coordenadas = new ListCasillas();
@@ -70,6 +72,7 @@ public class Jugador1 extends javax.swing.JFrame {
         AvisoNombre = new javax.swing.JLabel();
         buttonInstru = new javax.swing.JButton();
         EsperarJugador = new javax.swing.JLabel();
+        FondoInicio = new javax.swing.JLabel();
         PanelJuego = new javax.swing.JPanel();
         salirFin = new javax.swing.JButton();
         botonRespuesta = new javax.swing.JButton();
@@ -78,6 +81,7 @@ public class Jugador1 extends javax.swing.JFrame {
         fichaJugador1 = new javax.swing.JLabel();
         fichaJugador2 = new javax.swing.JLabel();
         CInicio = new javax.swing.JLabel();
+        LabelNombres = new javax.swing.JLabel();
         C2 = new javax.swing.JLabel();
         C3 = new javax.swing.JLabel();
         C8 = new javax.swing.JLabel();
@@ -95,6 +99,7 @@ public class Jugador1 extends javax.swing.JFrame {
         C14 = new javax.swing.JLabel();
         buttonDado = new javax.swing.JLabel();
         Dado = new javax.swing.JLabel();
+        FondoJuego = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MainFrame");
@@ -106,11 +111,13 @@ public class Jugador1 extends javax.swing.JFrame {
         MainPanel.setFocusable(false);
         MainPanel.setName(""); // NOI18N
         MainPanel.setPreferredSize(new java.awt.Dimension(600, 600));
+        MainPanel.setLayout(null);
 
         Nombre1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Nombre1.setForeground(new java.awt.Color(153, 153, 153));
         Nombre1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Nombre1.setText("Ingresar nombre (max 10 caracteres)");
+        Nombre1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Nombre1.setDisabledTextColor(new java.awt.Color(153, 153, 153));
         Nombre1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -122,74 +129,56 @@ public class Jugador1 extends javax.swing.JFrame {
                 Nombre1ActionPerformed(evt);
             }
         });
+        MainPanel.add(Nombre1);
+        Nombre1.setBounds(129, 104, 328, 38);
 
         buttonJugar.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         buttonJugar.setText("Jugar");
+        buttonJugar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
         buttonJugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonJugarAction(evt);
             }
         });
+        MainPanel.add(buttonJugar);
+        buttonJugar.setBounds(176, 213, 198, 49);
 
         buttonSalir.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         buttonSalir.setText("Salir");
+        buttonSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
         buttonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSalirAction(evt);
             }
         });
+        MainPanel.add(buttonSalir);
+        buttonSalir.setBounds(177, 385, 197, 47);
 
         AvisoNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MainPanel.add(AvisoNombre);
+        AvisoNombre.setBounds(128, 150, 330, 28);
 
         buttonInstru.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         buttonInstru.setText("Intrucciones");
+        buttonInstru.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
         buttonInstru.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonInstruAction(evt);
             }
         });
+        MainPanel.add(buttonInstru);
+        buttonInstru.setBounds(177, 299, 197, 47);
 
         EsperarJugador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MainPanel.add(EsperarJugador);
+        EsperarJugador.setBounds(129, 153, 328, 28);
 
-        javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
-        MainPanel.setLayout(MainPanelLayout);
-        MainPanelLayout.setHorizontalGroup(
-            MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MainPanelLayout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonInstru, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(MainPanelLayout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(Nombre1, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                    .addComponent(EsperarJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AvisoNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 137, Short.MAX_VALUE))
-        );
-        MainPanelLayout.setVerticalGroup(
-            MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanelLayout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(Nombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(AvisoNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(EsperarJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(32, 32, 32)
-                .addComponent(buttonJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(buttonInstru, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(buttonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        FondoInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_inicio2.jpg"))); // NOI18N
+        FondoInicio.setPreferredSize(new java.awt.Dimension(600, 600));
+        MainPanel.add(FondoInicio);
+        FondoInicio.setBounds(0, 0, 600, 600);
 
-        PanelJuego.setBackground(new java.awt.Color(0, 153, 153));
+        PanelJuego.setBackground(new java.awt.Color(255, 102, 0));
         PanelJuego.setPreferredSize(new java.awt.Dimension(600, 600));
         PanelJuego.setLayout(null);
 
@@ -200,7 +189,7 @@ public class Jugador1 extends javax.swing.JFrame {
             }
         });
         PanelJuego.add(salirFin);
-        salirFin.setBounds(340, 80, 60, 23);
+        salirFin.setBounds(370, 80, 60, 23);
 
         botonRespuesta.setText("Enviar");
         botonRespuesta.addActionListener(new java.awt.event.ActionListener() {
@@ -209,7 +198,7 @@ public class Jugador1 extends javax.swing.JFrame {
             }
         });
         PanelJuego.add(botonRespuesta);
-        botonRespuesta.setBounds(270, 80, 63, 23);
+        botonRespuesta.setBounds(300, 80, 63, 23);
 
         TextRespuesta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,7 +206,7 @@ public class Jugador1 extends javax.swing.JFrame {
             }
         });
         PanelJuego.add(TextRespuesta);
-        TextRespuesta.setBounds(220, 40, 170, 30);
+        TextRespuesta.setBounds(240, 40, 170, 30);
 
         LabelPregunta.setBackground(new java.awt.Color(204, 204, 204));
         LabelPregunta.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -226,7 +215,7 @@ public class Jugador1 extends javax.swing.JFrame {
         LabelPregunta.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         LabelPregunta.setOpaque(true);
         PanelJuego.add(LabelPregunta);
-        LabelPregunta.setBounds(190, 10, 230, 100);
+        LabelPregunta.setBounds(210, 10, 230, 100);
 
         fichaJugador1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Jugador 1.png"))); // NOI18N
         fichaJugador1.setText("sdad");
@@ -243,6 +232,10 @@ public class Jugador1 extends javax.swing.JFrame {
         CInicio.setPreferredSize(new java.awt.Dimension(150, 50));
         PanelJuego.add(CInicio);
         CInicio.setBounds(10, 135, 130, 87);
+
+        LabelNombres.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        PanelJuego.add(LabelNombres);
+        LabelNombres.setBounds(450, 10, 140, 100);
 
         C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C2.setPreferredSize(new java.awt.Dimension(150, 50));
@@ -289,12 +282,12 @@ public class Jugador1 extends javax.swing.JFrame {
         C10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C10.setPreferredSize(new java.awt.Dimension(150, 50));
         PanelJuego.add(C10);
-        C10.setBounds(168, 371, 130, 87);
+        C10.setBounds(160, 370, 130, 87);
 
         C11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C11.setPreferredSize(new java.awt.Dimension(150, 50));
         PanelJuego.add(C11);
-        C11.setBounds(316, 371, 130, 87);
+        C11.setBounds(310, 370, 130, 87);
 
         C5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C5.setPreferredSize(new java.awt.Dimension(150, 50));
@@ -305,23 +298,23 @@ public class Jugador1 extends javax.swing.JFrame {
         C15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C15.setPreferredSize(new java.awt.Dimension(150, 50));
         PanelJuego.add(C15);
-        C15.setBounds(170, 487, 130, 87);
+        C15.setBounds(160, 490, 130, 87);
 
         C13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C13.setPreferredSize(new java.awt.Dimension(150, 50));
         PanelJuego.add(C13);
-        C13.setBounds(457, 487, 130, 87);
+        C13.setBounds(450, 490, 130, 87);
 
         C12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C12.setPreferredSize(new java.awt.Dimension(150, 50));
         PanelJuego.add(C12);
-        C12.setBounds(454, 371, 130, 87);
+        C12.setBounds(450, 370, 130, 87);
 
         C14.setBackground(new java.awt.Color(204, 0, 204));
         C14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C14.setPreferredSize(new java.awt.Dimension(150, 50));
         PanelJuego.add(C14);
-        C14.setBounds(318, 487, 130, 87);
+        C14.setBounds(310, 490, 130, 87);
 
         buttonDado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/interrogation.png"))); // NOI18N
         buttonDado.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -330,11 +323,16 @@ public class Jugador1 extends javax.swing.JFrame {
             }
         });
         PanelJuego.add(buttonDado);
-        buttonDado.setBounds(480, 22, 80, 80);
+        buttonDado.setBounds(110, 10, 80, 80);
 
         Dado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DadoZero.png"))); // NOI18N
         PanelJuego.add(Dado);
-        Dado.setBounds(26, 11, 83, 83);
+        Dado.setBounds(10, 10, 83, 83);
+
+        FondoJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/camino_ventana.png"))); // NOI18N
+        FondoJuego.setPreferredSize(new java.awt.Dimension(600, 600));
+        PanelJuego.add(FondoJuego);
+        FondoJuego.setBounds(0, 0, 570, 560);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -364,7 +362,7 @@ public class Jugador1 extends javax.swing.JFrame {
 
     private void buttonJugarAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonJugarAction
 
-        String Jugador1 = Nombre1.getText();
+        Jugador1 = Nombre1.getText();
         int espacios = 0;
 
         if (Jugador1.contentEquals("") || Jugador1.length() >= 10) {
@@ -381,6 +379,13 @@ public class Jugador1 extends javax.swing.JFrame {
             AvisoNombre.setText("¡Nombre Vacío!");
             return;
         } else {
+            try {
+                datoSalida.writeUTF(Jugador1);
+            } catch (IOException ex) {
+                Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Nombre1.setEditable(false);
+            AvisoNombre.setText("");
             fichaJugador1.setLocation(CInicio.getX(), CInicio.getY());
             fichaJugador2.setLocation(CInicio.getX() + 20, CInicio.getY());
             EsperarJugador.setText("Esperando Jugador...");
@@ -521,19 +526,19 @@ public class Jugador1 extends javax.swing.JFrame {
                     int numTunel = numDado.nextInt(3) + 1;
                     int[] coordenadasCasilla;
                     coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
-                    
+
                     if (recorrido >= 15) {
                         recorrido = 16;
-                        System.out.println("recorrido es: "+recorrido);
+                        System.out.println("recorrido es: " + recorrido);
                         finalizarJuego();
                         coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
                         fichaJugador1.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
-                        
+
                         return;
                     }
 
                     if (coordenadasCasilla[2] == 1) {
-                        System.out.println("recorrido es: "+recorrido);
+                        System.out.println("recorrido es: " + recorrido);
                         PreguntaReto();
                         coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
                         fichaJugador1.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
@@ -542,7 +547,7 @@ public class Jugador1 extends javax.swing.JFrame {
                     } else if (coordenadasCasilla[2] == 2) {
 
                         recorrido -= numTunel;
-                        System.out.println("recorrido es: "+recorrido);
+                        System.out.println("recorrido es: " + recorrido);
                         if (recorrido <= 0) {
                             recorrido = 0;
                             fichaJugador1.setLocation(CInicio.getX(), CInicio.getY());
@@ -554,7 +559,7 @@ public class Jugador1 extends javax.swing.JFrame {
                     } else {
 
                         recorrido += numTunel;
-                        System.out.println("recorrido es: "+recorrido);
+                        System.out.println("recorrido es: " + recorrido);
                         coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
                         fichaJugador1.setLocation(coordenadasCasilla[0], coordenadasCasilla[1]);
                     }
@@ -617,7 +622,7 @@ public class Jugador1 extends javax.swing.JFrame {
 
     public void finalizarJuego() {
         String msjRecorrido = String.valueOf(recorrido);
-        close=0;
+        close = 0;
         try {
             datoSalida.writeUTF("fin del juego\n" + msjRecorrido);
         } catch (IOException ex) {
@@ -713,16 +718,22 @@ public class Jugador1 extends javax.swing.JFrame {
             Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
         }
         JLabel[] casillas = new JLabel[]{C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15};
-
-        while (close==1) {
+        int PassNombre=0;
+        while (close == 1) {
             try {
                 mensaje = datoEntrada.readUTF();
-            }catch(java.net.SocketException ex){     
+            } catch (java.net.SocketException ex) {
             } catch (IOException ex) {
                 Logger.getLogger(Jugador1.class.getName()).log(Level.SEVERE, null, ex);
-            
+            }if (PassNombre==0){
+                PassNombre=1;
+                Jugador2=mensaje;
+                LabelNombres.setAlignmentY(CENTER_ALIGNMENT);
+                LabelNombres.setAlignmentX(LEFT_ALIGNMENT);
+                LabelNombres.setText("<html>Tú:<p>"+Jugador1+"<p>Rival:<p>"+Jugador2+"<p></html>");
             }
-            if (mensaje.equals("casilla")) {
+            
+            else if (mensaje.equals("casilla")) {
 
                 for (int i = 0; i <= casillas.length; i++) {
                     if (i != casillas.length) {
@@ -871,6 +882,9 @@ public class Jugador1 extends javax.swing.JFrame {
     private static javax.swing.JLabel CInicio;
     private static javax.swing.JLabel Dado;
     private static javax.swing.JLabel EsperarJugador;
+    private javax.swing.JLabel FondoInicio;
+    private javax.swing.JLabel FondoJuego;
+    private static javax.swing.JLabel LabelNombres;
     private static javax.swing.JLabel LabelPregunta;
     private static javax.swing.JPanel MainPanel;
     private javax.swing.JTextField Nombre1;

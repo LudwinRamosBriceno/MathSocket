@@ -27,6 +27,8 @@ import static javax.swing.SwingConstants.TOP;
  */
 public class Jugador2 extends javax.swing.JFrame {
 
+    static String Jugador1;
+    String Jugador2;
     int Respuesta = 0;
     static boolean botonEnabled = false;
     static ListCasillas coordenadas = new ListCasillas();
@@ -65,6 +67,7 @@ public class Jugador2 extends javax.swing.JFrame {
         buttonSalir2 = new javax.swing.JButton();
         AvisoNombre = new javax.swing.JLabel();
         buttonInstru2 = new javax.swing.JButton();
+        FondoInicio = new javax.swing.JLabel();
         PanelJuego2 = new javax.swing.JPanel();
         salirFin = new javax.swing.JButton();
         botonRespuesta = new javax.swing.JButton();
@@ -73,6 +76,7 @@ public class Jugador2 extends javax.swing.JFrame {
         fichaJugador2 = new javax.swing.JLabel();
         fichaJugador1 = new javax.swing.JLabel();
         CInicio = new javax.swing.JLabel();
+        LabelNombres = new javax.swing.JLabel();
         C2 = new javax.swing.JLabel();
         C3 = new javax.swing.JLabel();
         C8 = new javax.swing.JLabel();
@@ -90,6 +94,7 @@ public class Jugador2 extends javax.swing.JFrame {
         C14 = new javax.swing.JLabel();
         buttonDado2 = new javax.swing.JLabel();
         Dado2 = new javax.swing.JLabel();
+        FondoJuego = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MainFrame2");
@@ -98,11 +103,13 @@ public class Jugador2 extends javax.swing.JFrame {
 
         MainPanel2.setBackground(new java.awt.Color(0, 153, 255));
         MainPanel2.setPreferredSize(new java.awt.Dimension(600, 600));
+        MainPanel2.setLayout(null);
 
         Nombre2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         Nombre2.setForeground(new java.awt.Color(153, 153, 153));
         Nombre2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         Nombre2.setText("Ingresar nombre (max 10 caracteres)");
+        Nombre2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         Nombre2.setDisabledTextColor(new java.awt.Color(153, 153, 153));
         Nombre2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -114,68 +121,52 @@ public class Jugador2 extends javax.swing.JFrame {
                 Nombre2ActionPerformed(evt);
             }
         });
+        MainPanel2.add(Nombre2);
+        Nombre2.setBounds(129, 104, 314, 38);
 
         buttonJugar2.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         buttonJugar2.setText("Jugar");
+        buttonJugar2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
         buttonJugar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonJugar2Action(evt);
             }
         });
+        MainPanel2.add(buttonJugar2);
+        buttonJugar2.setBounds(176, 209, 198, 49);
 
         buttonSalir2.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         buttonSalir2.setText("Salir");
+        buttonSalir2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
         buttonSalir2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSalir2Action(evt);
             }
         });
+        MainPanel2.add(buttonSalir2);
+        buttonSalir2.setBounds(177, 381, 197, 47);
 
         AvisoNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        MainPanel2.add(AvisoNombre);
+        AvisoNombre.setBounds(129, 148, 314, 30);
 
         buttonInstru2.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         buttonInstru2.setText("Intrucciones");
+        buttonInstru2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
         buttonInstru2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonInstru2Action(evt);
             }
         });
+        MainPanel2.add(buttonInstru2);
+        buttonInstru2.setBounds(177, 295, 197, 47);
 
-        javax.swing.GroupLayout MainPanel2Layout = new javax.swing.GroupLayout(MainPanel2);
-        MainPanel2.setLayout(MainPanel2Layout);
-        MainPanel2Layout.setHorizontalGroup(
-            MainPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MainPanel2Layout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addGroup(MainPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonJugar2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonInstru2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSalir2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(MainPanel2Layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addGroup(MainPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Nombre2, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
-                    .addComponent(AvisoNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 157, Short.MAX_VALUE))
-        );
-        MainPanel2Layout.setVerticalGroup(
-            MainPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MainPanel2Layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addComponent(Nombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AvisoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(buttonJugar2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(buttonInstru2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(buttonSalir2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        FondoInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Fondo_inicio2.jpg"))); // NOI18N
+        FondoInicio.setPreferredSize(new java.awt.Dimension(600, 600));
+        MainPanel2.add(FondoInicio);
+        FondoInicio.setBounds(0, 0, 600, 600);
 
-        PanelJuego2.setBackground(new java.awt.Color(255, 51, 51));
+        PanelJuego2.setBackground(new java.awt.Color(102, 102, 255));
         PanelJuego2.setPreferredSize(new java.awt.Dimension(600, 600));
         PanelJuego2.setLayout(null);
 
@@ -186,7 +177,7 @@ public class Jugador2 extends javax.swing.JFrame {
             }
         });
         PanelJuego2.add(salirFin);
-        salirFin.setBounds(340, 80, 60, 23);
+        salirFin.setBounds(380, 80, 60, 23);
 
         botonRespuesta.setText("Enviar");
         botonRespuesta.addActionListener(new java.awt.event.ActionListener() {
@@ -195,7 +186,7 @@ public class Jugador2 extends javax.swing.JFrame {
             }
         });
         PanelJuego2.add(botonRespuesta);
-        botonRespuesta.setBounds(270, 80, 63, 23);
+        botonRespuesta.setBounds(310, 80, 63, 23);
 
         TextRespuesta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +194,7 @@ public class Jugador2 extends javax.swing.JFrame {
             }
         });
         PanelJuego2.add(TextRespuesta);
-        TextRespuesta.setBounds(220, 40, 170, 30);
+        TextRespuesta.setBounds(250, 40, 170, 30);
 
         LabelPregunta.setBackground(new java.awt.Color(204, 204, 204));
         LabelPregunta.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -212,7 +203,7 @@ public class Jugador2 extends javax.swing.JFrame {
         LabelPregunta.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         LabelPregunta.setOpaque(true);
         PanelJuego2.add(LabelPregunta);
-        LabelPregunta.setBounds(190, 10, 230, 100);
+        LabelPregunta.setBounds(220, 10, 230, 100);
 
         fichaJugador2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Jugador 2.png"))); // NOI18N
         fichaJugador2.setText("jLabel1");
@@ -229,6 +220,10 @@ public class Jugador2 extends javax.swing.JFrame {
         CInicio.setPreferredSize(new java.awt.Dimension(150, 50));
         PanelJuego2.add(CInicio);
         CInicio.setBounds(10, 135, 130, 87);
+
+        LabelNombres.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        PanelJuego2.add(LabelNombres);
+        LabelNombres.setBounds(460, 10, 130, 100);
 
         C2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/casilla - inicio2.png"))); // NOI18N
         C2.setPreferredSize(new java.awt.Dimension(150, 50));
@@ -317,11 +312,16 @@ public class Jugador2 extends javax.swing.JFrame {
             }
         });
         PanelJuego2.add(buttonDado2);
-        buttonDado2.setBounds(470, 22, 80, 80);
+        buttonDado2.setBounds(110, 10, 80, 80);
 
         Dado2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/DadoZero.png"))); // NOI18N
         PanelJuego2.add(Dado2);
-        Dado2.setBounds(27, 11, 83, 83);
+        Dado2.setBounds(10, 10, 83, 83);
+
+        FondoJuego.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/camino_ventana.png"))); // NOI18N
+        FondoJuego.setPreferredSize(new java.awt.Dimension(600, 600));
+        PanelJuego2.add(FondoJuego);
+        FondoJuego.setBounds(0, 0, 570, 560);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -355,7 +355,16 @@ public class Jugador2 extends javax.swing.JFrame {
 
     private void buttonJugar2Action(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonJugar2Action
 
-        String Jugador2 = Nombre2.getText();
+        Jugador2 = Nombre2.getText();
+        LabelNombres.setAlignmentX(LEFT_ALIGNMENT);
+        LabelNombres.setAlignmentY(CENTER_ALIGNMENT);
+        LabelNombres.setText("<html>Tú:<p>" + Jugador2 + "<p>Rival:<p>" + Jugador1 + "<p></html>");
+        try {
+            datoSalida.writeUTF(Jugador2);
+        } catch (IOException ex) {
+            Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         int espacios = 0;
         //char[] caracteres = Jugador1.toCharArray();
         if (Jugador2.contentEquals("") || Jugador2.length() >= 10) {
@@ -567,7 +576,7 @@ public class Jugador2 extends javax.swing.JFrame {
                         break;
                 }
                 recorrido += num;
-                
+
                 int numTunel = numDado.nextInt(3) + 1;
                 int[] coordenadasCasilla;
                 coordenadasCasilla = coordenadas.ObtenerCoordenadas(recorrido);
@@ -748,16 +757,21 @@ public class Jugador2 extends javax.swing.JFrame {
             socket = new Socket("127.0.0.1", 1201);
             datoEntrada = new DataInputStream(socket.getInputStream());
             datoSalida = new DataOutputStream(socket.getOutputStream());
-
+            int PassNombre = 0;
             while (true) {
                 try {
                     mensaje = datoEntrada.readUTF();
-                } catch (java.net.SocketException ex) {         
+                } catch (java.net.SocketException ex) {
                 } catch (IOException ex) {
-                        Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Jugador2.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                if (PassNombre == 0) {
+                    PassNombre = 1;
+                    Jugador1 = mensaje;
+
                 }
 
-                if (valorDado == 0 && !mensaje.equals("") && count == 0) {
+                else if (valorDado == 0 && !mensaje.equals("") && count == 0) {
                     buttonDado2.setEnabled(true);
                     botonEnabled = true;
 
@@ -813,7 +827,7 @@ public class Jugador2 extends javax.swing.JFrame {
                                 datoEntrada.close();
                             } catch (IOException ex) {
                             }
-                            
+
                             return;
                         } else {
                             LabelPregunta.setText("Respuesta incorrecta");
@@ -851,6 +865,9 @@ public class Jugador2 extends javax.swing.JFrame {
     private javax.swing.JLabel CFin;
     private static javax.swing.JLabel CInicio;
     private javax.swing.JLabel Dado2;
+    private javax.swing.JLabel FondoInicio;
+    private javax.swing.JLabel FondoJuego;
+    private static javax.swing.JLabel LabelNombres;
     private static javax.swing.JLabel LabelPregunta;
     private static javax.swing.JPanel MainPanel2;
     private javax.swing.JTextField Nombre2;
