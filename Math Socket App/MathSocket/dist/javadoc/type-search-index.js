@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"mathsocket","l":"AsigCasillas"},{"p":"mathsocket","l":"Imagenes"},{"p":"mathsocket","l":"Jugador1"},{"p":"mathsocket","l":"Jugador2"},{"p":"mathsocket","l":"ListCasillas"},{"p":"mathsocket","l":"NodosCasillas"}];updateSearchResults();
