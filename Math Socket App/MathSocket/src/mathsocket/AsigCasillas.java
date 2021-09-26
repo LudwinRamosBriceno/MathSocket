@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package mathsocket;
 
 import java.util.ArrayList;
@@ -11,13 +7,19 @@ import java.util.List;
 import java.util.Random;
 
 /**
- *
- * @author lujor
+ *Crea el array de los tipos de casilla aleatoriamente.
+ * @author Ludwin Ramos,Alisson Redondo, Greivin Carrillo.
+ * @version 1.0
+ * @since 25/09/2021
  */
 public class AsigCasillas {
 
     private int [] casillas;
     ArrayList <Integer> TipoCasillas = new ArrayList <Integer>();
+    
+    /**
+     * Inicializa un arreylist de los tipos de casilla.
+     */
     public AsigCasillas(){
         casillas = new int[14];
         for (int i=1;i<=7;i++){
@@ -29,7 +31,11 @@ public class AsigCasillas {
         }
      
     }
-
+    /**
+     * Toma los elemetos del arreylist "TipoCasillas" y los inserta aleatoriamente
+     * en un arrey "casillas".
+     * @return devuelve un arrey con los tipos de casilla en orden aleatorio.
+     */
     public int[] dequeue() {
         
         int count = 0;
@@ -38,7 +44,6 @@ public class AsigCasillas {
             Random RandomIndex = new Random();
             int index = RandomIndex.nextInt(LargoLista);
             this.casillas[i] = TipoCasillas.get(index);
-            //System.out.println(casillas[i]);
             TipoCasillas.remove(index);
             LargoLista--;
         }
@@ -47,8 +52,7 @@ public class AsigCasillas {
     
     public static void main(String args[]){
 
-        //System.out.println(TipoCasillas);  
         AsigCasillas p = new AsigCasillas();
-        //System.out.println(Arrays.toString(p.dequeue()));  
+       
     }
 }
