@@ -406,7 +406,7 @@ public class Jugador1 extends javax.swing.JFrame {
     private void buttonInstruAction(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInstruAction
         JOptionPane.showMessageDialog(null, "Instrucciones:\n\n1. Ingresa tu nombre.\n2. Se asigna la ficha gris al jugador 1"
                 + " y la ficha rosa al jugador 2.\n3. El primer turno se decide al lanzar el dado, si ambos son iguales se"
-                + " lanza una vez más.\n4. Gana el primero en llegar a la casilla \"F \". ");
+                + " lanza una vez más.\n4. Gana el primero en llegar a la casilla \"Fin \". ");
     }//GEN-LAST:event_buttonInstruAction
 
     private void Nombre1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Nombre1MousePressed
